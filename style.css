@@ -620,6 +620,7 @@ a:hover {
   padding: 1.5rem;
   transition: transform 0.2s, border-color 0.2s;
   position: relative;
+  cursor: pointer;
 }
 
 .project-card::before {
@@ -691,6 +692,52 @@ a:hover {
   line-height: 1.5;
 }
 
+/* Expand hint chevron */
+.expand-hint {
+  font-size: 0.7rem;
+  color: var(--subtext0);
+  transition: transform 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.project-card.expanded .expand-hint {
+  transform: rotate(180deg);
+  color: var(--lavender);
+}
+
+/* Expandable detail bullets */
+.project-details {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+  margin: 0;
+}
+
+.project-card.expanded .project-details {
+  max-height: 500px;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
+.project-details li {
+  font-size: 0.9rem;
+  color: var(--subtext1);
+  padding: 0.25rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.project-details li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--mauve);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -731,6 +778,7 @@ a:hover {
 .skill-group:nth-child(2) { border-top-color: var(--peach); }
 .skill-group:nth-child(3) { border-top-color: var(--teal); }
 .skill-group:nth-child(4) { border-top-color: var(--lavender); }
+.skill-group:nth-child(5) { border-top-color: var(--green); }
 
 .skill-category {
   font-family: var(--font-mono);
@@ -744,11 +792,13 @@ a:hover {
 .skill-group:nth-child(2) .skill-category { color: var(--peach); }
 .skill-group:nth-child(3) .skill-category { color: var(--teal); }
 .skill-group:nth-child(4) .skill-category { color: var(--lavender); }
+.skill-group:nth-child(5) .skill-category { color: var(--green); }
 
 .skill-group:nth-child(1) .skill-list li::before { color: var(--red); }
 .skill-group:nth-child(2) .skill-list li::before { color: var(--peach); }
 .skill-group:nth-child(3) .skill-list li::before { color: var(--teal); }
 .skill-group:nth-child(4) .skill-list li::before { color: var(--lavender); }
+.skill-group:nth-child(5) .skill-list li::before { color: var(--green); }
 
 .skill-list {
   list-style: none;

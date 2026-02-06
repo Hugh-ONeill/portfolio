@@ -74,6 +74,11 @@
   updateNav();
   updateActiveLink();
 
+  // --- Expandable project cards ---
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('expanded'));
+  });
+
   // =========================================
   // MOUSE PARALLAX — Hero floating symbols
   // =========================================
