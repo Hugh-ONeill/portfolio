@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hugh O'Neill | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Nav -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">&gt;_</a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">about</a>
+      <a href="#projects" class="nav-link">experience</a>
+      <a href="#skills" class="nav-link">skills</a>
+      <a href="#contact" class="nav-link">contact</a>
+    </div>
+    <select id="theme-switcher" aria-label="Color theme">
+      <option value="">catppuccin</option>
+
+      <option value="cassette">cassette</option>
+      <option value="cavelight">cavelight</option>
+      <option value="chalkboard">chalkboard</option>
+      <option value="confetti">confetti</option>
+      <option value="crystal">crystal</option>
+      <option value="cyberpunk">cyberpunk</option>
+    </select>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <!-- Floating code symbols — mouse-reactive parallax -->
+    <div class="hero-floats">
+      <!-- python -->
+      <span class="hero-float" data-speed="0.08" style="top:6%;left:5%">def</span>
+      <span class="hero-float" data-speed="0.18" style="top:10%;left:30%">**</span>
+      <span class="hero-float" data-speed="0.20" style="top:35%;left:22%">__</span>
+      <span class="hero-float" data-speed="0.09" style="top:45%;left:8%">@</span>
+      <span class="hero-float" data-speed="0.04" style="top:52%;right:22%">#</span>
+      <span class="hero-float" data-speed="0.13" style="top:75%;left:55%">:=</span>
+      <span class="hero-float" data-speed="0.16" style="top:50%;left:25%">f""</span>
+      <!-- java/typescript -->
+      <span class="hero-float" data-speed="0.05" style="top:8%;right:25%">&lt;T&gt;</span>
+      <span class="hero-float" data-speed="0.15" style="top:22%;left:65%">::</span>
+      <span class="hero-float" data-speed="0.10" style="top:32%;right:10%">=&gt;</span>
+      <span class="hero-float" data-speed="0.11" style="top:52%;right:5%">...</span>
+      <span class="hero-float" data-speed="0.21" style="top:65%;left:72%">{ }</span>
+      <span class="hero-float" data-speed="0.06" style="top:82%;left:40%">!=</span>
+      <!-- c# -->
+      <span class="hero-float" data-speed="0.22" style="top:14%;right:8%">??</span>
+      <span class="hero-float" data-speed="0.07" style="top:18%;right:40%">&lt;&gt;</span>
+      <span class="hero-float" data-speed="0.16" style="top:42%;right:30%">?.</span>
+      <span class="hero-float" data-speed="0.14" style="top:62%;left:6%">??=</span>
+      <span class="hero-float" data-speed="0.24" style="top:78%;right:35%">get;</span>
+      <span class="hero-float" data-speed="0.20" style="top:90%;left:60%">null</span>
+      <!-- kotlin -->
+      <span class="hero-float" data-speed="0.12" style="top:20%;left:12%">fun</span>
+      <span class="hero-float" data-speed="0.25" style="top:28%;left:3%">-&gt;</span>
+      <span class="hero-float" data-speed="0.06" style="top:38%;left:80%">?:</span>
+      <span class="hero-float" data-speed="0.08" style="top:68%;right:12%">|&gt;</span>
+      <span class="hero-float" data-speed="0.17" style="top:72%;left:18%">!!</span>
+      <span class="hero-float" data-speed="0.23" style="top:78%;left:8%">it</span>
+      <!-- bash -->
+      <span class="hero-float" data-speed="0.11" style="top:30%;left:38%">#!</span>
+      <span class="hero-float" data-speed="0.19" style="top:78%;left:22%">$@</span>
+      <span class="hero-float" data-speed="0.15" style="top:85%;right:8%">|</span>
+      <span class="hero-float" data-speed="0.10" style="top:88%;left:10%">&amp;&amp;</span>
+      <span class="hero-float" data-speed="0.07" style="top:89%;right:20%">&gt;&gt;</span>
+      <span class="hero-float" data-speed="0.14" style="top:40%;left:32%">${}</span>
+      <span class="hero-float" data-speed="0.12" style="top:18%;left:48%">$( )</span>
+      <span class="hero-float" data-speed="0.18" style="top:68%;left:38%">2&gt;&amp;1</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-prompt">&gt;_ hello, world</p>
+      <h1 class="hero-name">Hugh O'Neill</h1>
+      <p class="hero-tagline">Full-Stack Software Engineer</p>
+      <p class="hero-sub">Building across the stack, from databases to frontends and everything in between.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section section-about">
+    <div class="container">
+      <h2 class="section-title fade-in">about me</h2>
+      <div class="about-grid">
+        <div class="about-photo fade-in">
+          <div class="photo-placeholder">
+            <span>&gt;_ photo</span>
+          </div>
+        </div>
+        <div class="about-text fade-in">
+          <p>I'm a software engineer with a Computer Engineering degree from the University of Pittsburgh and 5+ years of professional experience building full-stack applications. I've worked across Angular and React frontends, Java/Kotlin/Python backends, and PostgreSQL databases.</p>
+          <p>Most recently I was the first engineer at an AI startup, working directly with the CEO to build a product from the ground up. Before that I spent nearly five years at 3M Health Information Systems, where I grew from a new grad into a team lead who helped double the team's size.</p>
+          <p class="about-highlight">Strongest in <span class="accent-lavender">full-stack web development</span>, <span class="accent-teal">scripting &amp; automation</span>, and <span class="accent-mauve">database design</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="parallax-divider divider-1"></div>
+
+  <!-- Projects -->
+  <section id="projects" class="section section-projects">
+    <div class="container">
+      <h2 class="section-title fade-in">experience</h2>
+      <div class="project-grid">
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-icon">&#x1F916;</span>
+          </div>
+          <h3 class="project-title">Avalon AI</h3>
+          <p class="project-role">Full-Stack Software Engineer &middot; Nov 2025 &ndash; Jan 2026</p>
+          <p class="project-desc">First engineer at an AI-focused startup building software for tax preparation professionals. Worked across the full stack directly alongside the CEO, shipping features end-to-end in a fast-moving environment.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Python</span>
+            <span class="tag tag-peach">React</span>
+            <span class="tag tag-blue">Electron</span>
+            <span class="tag tag-sky">Node.js</span>
+            <span class="tag tag-mauve">PostgreSQL</span>
+            <span class="tag tag-teal">Supabase</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-icon">&#x1F3E5;</span>
+          </div>
+          <h3 class="project-title">3M Health Information Systems</h3>
+          <p class="project-role">Software Engineer T2, HCC Collaborate &middot; Jul 2018 &ndash; Jan 2023</p>
+          <p class="project-desc">Built and maintained features across the full stack of a healthcare application. Redesigned the database to eliminate expensive triggers in favor of a live-data model. Created automated E2E testing and reporting systems. Helped interview and train new hires, growing the team to over twice its original size.</p>
+          <div class="project-tags">
+            <span class="tag tag-peach">Angular</span>
+            <span class="tag tag-green">Java</span>
+            <span class="tag tag-sky">Kotlin</span>
+            <span class="tag tag-mauve">PostgreSQL</span>
+            <span class="tag tag-blue">TypeScript</span>
+            <span class="tag tag-teal">C#</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-icon">&#x1F9EA;</span>
+          </div>
+          <h3 class="project-title">Ansys Inc.</h3>
+          <p class="project-role">Co-Op, Mesh Testing Team &middot; 2015 &ndash; 2017</p>
+          <p class="project-desc">Four alternating semesters on the testing team for 3D mesh creation software. Self-taught Python on the job and used it to automate test-data analysis and build full test-automation scripts, collaborating with the team to identify new automation opportunities.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Python</span>
+            <span class="tag tag-blue">Automation</span>
+            <span class="tag tag-mauve">Testing</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-icon">&#x1F4F1;</span>
+          </div>
+          <h3 class="project-title">Android Apps</h3>
+          <p class="project-role">University Projects &middot; University of Pittsburgh</p>
+          <p class="project-desc">Built Android apps across three semester-long design projects, integrating relational and document-based databases, online servers, and Arduino controllers for remote data access. Each app featured a clean Material Design UI.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Java</span>
+            <span class="tag tag-peach">Android</span>
+            <span class="tag tag-sky">SQL</span>
+            <span class="tag tag-teal">Arduino</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="parallax-divider divider-2"></div>
+
+  <!-- Skills -->
+  <section id="skills" class="section section-skills">
+    <div class="container">
+      <h2 class="section-title fade-in">skills</h2>
+      <div class="skills-grid">
+
+        <div class="skill-group fade-in">
+          <h3 class="skill-category">Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>TypeScript / JavaScript</li>
+            <li>Kotlin</li>
+            <li>C</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+
+        <div class="skill-group fade-in">
+          <h3 class="skill-category">Frontend</h3>
+          <ul class="skill-list">
+            <li>Angular</li>
+            <li>React</li>
+            <li>HTML &amp; CSS</li>
+            <li>Electron</li>
+            <li>Vite</li>
+          </ul>
+        </div>
+
+        <div class="skill-group fade-in">
+          <h3 class="skill-category">Backend &amp; Data</h3>
+          <ul class="skill-list">
+            <li>PostgreSQL / NoSQL</li>
+            <li>Node.js</li>
+            <li>Spring Boot</li>
+            <li>Flask</li>
+            <li>Supabase</li>
+            <li>Docker</li>
+          </ul>
+        </div>
+
+        <div class="skill-group fade-in">
+          <h3 class="skill-category">Tools &amp; Practices</h3>
+          <ul class="skill-list">
+            <li>Git / Hg / SVN</li>
+            <li>AWS (Certified)</li>
+            <li>Shell Scripting / Bash</li>
+            <li>E2E &amp; Unit Testing</li>
+            <li>Agile / Scrum</li>
+            <li>AI-Assisted Development</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-contact">
+    <div class="container">
+      <h2 class="section-title fade-in">contact</h2>
+      <div class="contact-content fade-in">
+        <p class="contact-text">Want to work together or just say hello?</p>
+        <p class="contact-prompt">&gt;_ reach out</p>
+        <div class="contact-links">
+          <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link">
+            <span class="contact-label">email</span>
+            <span class="contact-value">hugh.j.oneill.4@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/hugh-o-neill-iv" class="contact-link">
+            <span class="contact-label">linkedin</span>
+            <span class="contact-value">linkedin.com/in/hugh-o-neill-iv</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built with care. No frameworks harmed.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
