@@ -18,10 +18,7 @@
   --blue:     #89b4fa;
   --sky:      #89dceb;
   --red:      #f38ba8;
-  --maroon:   #eba0ac;
   --yellow:   #f9e2af;
-  --flamingo: #f2cdcd;
-  --rosewater:#f5e0dc;
 
   --rainbow: linear-gradient(
     90deg,
@@ -321,12 +318,12 @@ a:hover {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 10% 30%, rgba(243, 139, 168, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 30% 70%, rgba(250, 179, 135, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 20%, rgba(249, 226, 175, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(166, 227, 161, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(137, 180, 250, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(203, 166, 247, 0.05) 0%, transparent 40%);
+    radial-gradient(circle at 10% 30%, color-mix(in srgb, var(--red) 6%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 30% 70%, color-mix(in srgb, var(--peach) 5%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--yellow) 4%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, color-mix(in srgb, var(--green) 5%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, color-mix(in srgb, var(--blue) 6%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--mauve) 5%, transparent) 0%, transparent 40%);
   background-attachment: fixed;
   z-index: 0;
 }
@@ -473,22 +470,11 @@ a:hover {
   background: var(--mantle);
 }
 
-.section-about::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(var(--surface0) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.15;
-  pointer-events: none;
-}
-
 .section-projects {
   background: var(--base);
 }
 
-.section-projects::before {
+.section-dots::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -580,8 +566,10 @@ a:hover {
   height: 250px;
   background: var(--surface0);
   border: 2px solid transparent;
-  border-image: var(--rainbow) 1;
   border-radius: 8px;
+  background-image: linear-gradient(var(--surface0), var(--surface0)), var(--rainbow);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,12 +624,15 @@ a:hover {
   transition: opacity 0.3s;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-visible {
   transform: translateY(-3px);
   border-color: var(--surface2);
+  outline: none;
 }
 
-.project-card:hover::before {
+.project-card:hover::before,
+.project-card:focus-visible::before {
   opacity: 1;
 }
 
@@ -761,12 +752,15 @@ a:hover {
 
 /* === Skills === */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
 .skill-group {
+  flex: 0 1 calc((100% - 4rem) / 3);
+  min-width: 250px;
   padding: 1.5rem;
   background: var(--base);
   border: 1px solid var(--surface0);
@@ -945,8 +939,8 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .skill-group {
+    flex: 1 1 100%;
   }
 
   .parallax-divider {
@@ -979,5 +973,25 @@ a:hover {
 
   .section-title {
     font-size: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-float {
+    display: none;
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }

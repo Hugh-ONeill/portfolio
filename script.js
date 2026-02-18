@@ -75,19 +75,33 @@
   updateActiveLink();
 
   // --- Expandable project cards ---
+  function toggleCard(card) {
+    const expanded = card.classList.toggle('expanded');
+    card.setAttribute('aria-expanded', expanded);
+  }
+
   document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('expanded'));
+    card.addEventListener('click', () => toggleCard(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleCard(card);
+      }
+    });
   });
 
   // =========================================
   // MOUSE PARALLAX — Hero floating symbols
   // =========================================
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroFloats = document.querySelectorAll('.hero-float');
   const heroSection = document.querySelector('.hero');
   let mouseX = 0.5, mouseY = 0.5;
   let smoothX = 0.5, smoothY = 0.5;
+  let heroVisible = true;
+  let rafId = null;
 
-  if (heroSection) {
+  if (heroSection && !prefersReducedMotion) {
     heroSection.addEventListener('mousemove', (e) => {
       const rect = heroSection.getBoundingClientRect();
       mouseX = (e.clientX - rect.left) / rect.width;
@@ -98,22 +112,29 @@
       mouseX = 0.5;
       mouseY = 0.5;
     });
+
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      if (heroVisible && !rafId) rafId = requestAnimationFrame(animateFloats);
+    }, { threshold: 0 }).observe(heroSection);
+
+    function animateFloats() {
+      if (!heroVisible) { rafId = null; return; }
+
+      smoothX += (mouseX - smoothX) * 0.06;
+      smoothY += (mouseY - smoothY) * 0.06;
+
+      const ox = (smoothX - 0.5) * 2; // -1 to 1
+      const oy = (smoothY - 0.5) * 2;
+
+      heroFloats.forEach(el => {
+        const depth = parseFloat(el.dataset.speed) * 350;
+        el.style.transform = `translate(${ox * depth}px, ${oy * depth}px)`;
+      });
+
+      rafId = requestAnimationFrame(animateFloats);
+    }
+
+    rafId = requestAnimationFrame(animateFloats);
   }
-
-  function animateFloats() {
-    smoothX += (mouseX - smoothX) * 0.06;
-    smoothY += (mouseY - smoothY) * 0.06;
-
-    const ox = (smoothX - 0.5) * 2; // -1 to 1
-    const oy = (smoothY - 0.5) * 2;
-
-    heroFloats.forEach(el => {
-      const depth = parseFloat(el.dataset.speed) * 350;
-      el.style.transform = `translate(${ox * depth}px, ${oy * depth}px)`;
-    });
-
-    requestAnimationFrame(animateFloats);
-  }
-
-  requestAnimationFrame(animateFloats);
 })();
