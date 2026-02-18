@@ -470,8 +470,12 @@ a:hover {
   background: var(--mantle);
 }
 
-.section-projects {
+.section-experience {
   background: var(--base);
+}
+
+.section-projects {
+  background: var(--mantle);
 }
 
 .section-dots::before {
@@ -750,6 +754,117 @@ a:hover {
 .tag-sky    { color: var(--sky); }
 .tag-teal   { color: var(--teal); }
 
+/* === Showcase Projects === */
+.showcase-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+
+.showcase-card {
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.showcase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--rainbow);
+  border-radius: 8px 8px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.showcase-card:hover::before {
+  opacity: 1;
+}
+
+.showcase-title {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.showcase-desc {
+  color: var(--subtext0);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.showcase-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.showcase-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--subtext0);
+  border: 1px solid var(--surface1);
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.showcase-link:hover {
+  border-color: var(--lavender);
+  color: var(--lavender);
+}
+
+/* ---- Fun Row ---- */
+.fun-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.fun-card {
+  flex: 1 1 0;
+  min-width: 200px;
+  max-width: 320px;
+  background: var(--surface0);
+  border: 1px solid var(--surface1);
+  border-radius: 8px;
+  padding: 1.2rem;
+  opacity: 0.85;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.fun-card:hover {
+  opacity: 1;
+  border-color: var(--surface2);
+}
+
+.fun-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.fun-desc {
+  color: var(--subtext0);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
 /* === Skills === */
 .skills-grid {
   display: flex;
@@ -937,6 +1052,15 @@ a:hover {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .fun-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fun-card {
+    max-width: 100%;
   }
 
   .skill-group {

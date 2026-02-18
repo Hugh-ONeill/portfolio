@@ -18,7 +18,8 @@
     <a href="#hero" class="nav-logo">&gt;_</a>
     <div class="nav-links">
       <a href="#about" class="nav-link">about</a>
-      <a href="#projects" class="nav-link">experience</a>
+      <a href="#experience" class="nav-link">experience</a>
+      <a href="#projects" class="nav-link">projects</a>
       <a href="#skills" class="nav-link">skills</a>
       <a href="#contact" class="nav-link">contact</a>
     </div>
@@ -112,8 +113,8 @@
   <!-- Divider -->
   <div class="parallax-divider divider-1"></div>
 
-  <!-- Projects -->
-  <section id="projects" class="section section-projects section-dots">
+  <!-- Experience -->
+  <section id="experience" class="section section-experience section-dots">
     <div class="container">
       <h2 class="section-title fade-in">experience</h2>
       <div class="project-grid">
@@ -195,6 +196,91 @@
 
   <!-- Divider -->
   <div class="parallax-divider divider-2"></div>
+
+  <!-- Projects -->
+  <section id="projects" class="section section-projects section-dots">
+    <div class="container">
+      <h2 class="section-title fade-in">projects</h2>
+      <div class="showcase-grid">
+
+        <article class="showcase-card fade-in">
+          <h3 class="showcase-title">Unified Theme Engine</h3>
+          <p class="showcase-desc">System that themes 32 applications from shared JSON color palettes. Generates configs for Waybar, Kitty, Rofi, Neovim, Firefox, and 25+ more via envsubst templating with contrast-aware color generation and per-theme overrides.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Bash</span>
+            <span class="tag tag-sky">Shell</span>
+            <span class="tag tag-blue">JSONC</span>
+          </div>
+          <div class="showcase-links">
+            <!-- TODO: update href -->
+            <a href="#" class="showcase-link" target="_blank" rel="noopener">dotfiles</a>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <h3 class="showcase-title">bookmark-reorganizer</h3>
+          <p class="showcase-desc">CLI tool that uses Claude to analyze and reorganize browser bookmarks into logical categories. Parses HTML exports, classifies via AI, stores results in PostgreSQL, and provides an interactive TUI for review.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Python</span>
+            <span class="tag tag-mauve">PostgreSQL</span>
+            <span class="tag tag-peach">Claude API</span>
+            <span class="tag tag-teal">Textual</span>
+          </div>
+          <div class="showcase-links">
+            <!-- TODO: update href -->
+            <a href="#" class="showcase-link" target="_blank" rel="noopener">source</a>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <h3 class="showcase-title">lyrics</h3>
+          <p class="showcase-desc">Terminal lyrics viewer that syncs with any MPRIS media player. Fetches time-synced lyrics from lrclib, displays a real-time scrolling view with gradient progress bar, and pulls song annotations from Genius in a dual-pane curses UI.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Python</span>
+            <span class="tag tag-sky">Curses</span>
+            <span class="tag tag-blue">MPRIS</span>
+            <span class="tag tag-peach">Genius API</span>
+          </div>
+          <div class="showcase-links">
+            <!-- TODO: update href -->
+            <a href="#" class="showcase-link" target="_blank" rel="noopener">dotfiles</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="fun-grid">
+        <div class="fun-card fade-in">
+          <h4 class="fun-title">banana</h4>
+          <p class="fun-desc">3D rotating banana in the terminal. Yes, it's the donut script. No, I'm not sorry.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Python</span>
+            <span class="tag tag-mauve">3D Math</span>
+          </div>
+        </div>
+
+        <div class="fun-card fade-in">
+          <h4 class="fun-title">runner</h4>
+          <p class="fun-desc">Run-and-gun platformer with pixel-art sprites, enemy AI, and infinite scrolling.</p>
+          <div class="project-tags">
+            <span class="tag tag-peach">Pygame</span>
+          </div>
+        </div>
+
+        <div class="fun-card fade-in">
+          <h4 class="fun-title">gradfill</h4>
+          <p class="fun-desc">Terminal screensaver that fills the screen with animated gradient patterns &mdash; diagonal, spiral, wave, burst, and more.</p>
+          <div class="project-tags">
+            <span class="tag tag-green">Bash</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="parallax-divider divider-3"></div>
 
   <!-- Skills -->
   <section id="skills" class="section section-skills">
