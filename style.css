@@ -766,10 +766,11 @@ a:hover {
 
 .showcase-card {
   background: var(--surface0);
-  border: 1px solid var(--surface1);
+  border: 1px solid var(--surface2);
   border-radius: 8px;
   padding: 1.5rem;
   position: relative;
+  transition: border-color 0.2s;
 }
 
 .showcase-card::before {
@@ -789,11 +790,122 @@ a:hover {
   opacity: 1;
 }
 
+.showcase-body {
+  display: flex;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.showcase-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.showcase-img {
+  flex: 0 0 280px;
+  height: 180px;
+  background: var(--base);
+  border: 1px solid var(--surface1);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-img {
+  cursor: pointer;
+}
+
+.showcase-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showcase-img img[src=""] {
+  display: none;
+}
+
+.showcase-img:has(img[src=""])::after {
+  content: '>_ screenshot';
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--subtext0);
+}
+
+/* ---- Theme Gallery ---- */
+.showcase-gallery {
+  flex: 0 0 320px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid var(--surface1);
+  border-radius: 6px;
+  background: var(--base);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface2) transparent;
+}
+
+.showcase-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+
+.showcase-gallery::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.showcase-gallery::-webkit-scrollbar-thumb {
+  background: var(--surface2);
+  border-radius: 3px;
+}
+
+.gallery-track {
+  display: flex;
+  height: 100%;
+}
+
+.gallery-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item {
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  flex: 1;
+  object-fit: cover;
+  display: block;
+  min-height: 0;
+}
+
+.gallery-item figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--subtext0);
+  text-align: center;
+  padding: 0.3rem 0;
+  background: var(--surface0);
+  border-top: 1px solid var(--surface1);
+}
+
 .showcase-title {
   font-family: var(--font-mono);
   font-size: 1.2rem;
   color: var(--text);
   margin-bottom: 0.5rem;
+}
+
+.showcase-title-icon {
+  height: 1.4em;
+  vertical-align: middle;
+  image-rendering: pixelated;
 }
 
 .showcase-desc {
@@ -839,16 +951,50 @@ a:hover {
   min-width: 200px;
   max-width: 320px;
   background: var(--surface0);
-  border: 1px solid var(--surface1);
+  border: 1px solid var(--surface2);
   border-radius: 8px;
   padding: 1.2rem;
-  opacity: 0.85;
-  transition: opacity 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .fun-card:hover {
-  opacity: 1;
-  border-color: var(--surface2);
+  border-color: var(--lavender);
+}
+
+.fun-img {
+  aspect-ratio: 5 / 4;
+
+  background: var(--base);
+  border: 1px solid var(--surface1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fun-img {
+  cursor: pointer;
+}
+
+.fun-img img,
+.fun-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fun-img img[src=""] {
+  display: none;
+}
+
+.fun-img:has(img[src=""])::after {
+  content: '>_ screenshot';
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--subtext0);
 }
 
 .fun-title {
@@ -999,6 +1145,74 @@ a:hover {
   border-image: var(--rainbow) 1;
 }
 
+/* === Lightbox === */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: color-mix(in srgb, var(--crust) 92%, transparent);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--surface1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: color-mix(in srgb, var(--surface0) 80%, transparent);
+  border: 1px solid var(--surface2);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.lightbox-nav:hover {
+  background: var(--surface0);
+  border-color: var(--lavender);
+}
+
+.lightbox.has-gallery .lightbox-nav {
+  display: flex;
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
+.lightbox-caption {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--subtext0);
+}
+
 /* === Fade-in Animations === */
 .fade-in {
   opacity: 0;
@@ -1052,6 +1266,21 @@ a:hover {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .showcase-body {
+    flex-direction: column;
+  }
+
+  .showcase-img {
+    flex: none;
+    width: 100%;
+    height: 160px;
+  }
+
+  .showcase-gallery {
+    flex: none;
+    width: 100%;
   }
 
   .fun-grid {

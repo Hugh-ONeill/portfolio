@@ -90,6 +90,127 @@
     });
   });
 
+  // --- Lightbox ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  let galleryItems = [];
+  let galleryIndex = 0;
+
+  function showSlide(i) {
+    galleryIndex = (i + galleryItems.length) % galleryItems.length;
+    lightboxImg.src = galleryItems[galleryIndex].src;
+    lightboxCaption.textContent = galleryItems[galleryIndex].alt;
+  }
+
+  function openLightbox(src, alt, items, index) {
+    lightboxImg.src = src;
+    lightboxCaption.textContent = alt;
+    if (items && items.length > 1) {
+      galleryItems = items;
+      galleryIndex = index || 0;
+      lightbox.classList.add('has-gallery');
+    } else {
+      galleryItems = [];
+      lightbox.classList.remove('has-gallery');
+    }
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active', 'has-gallery');
+    lightboxImg.src = '';
+    galleryItems = [];
+  }
+
+  lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showSlide(galleryIndex - 1);
+  });
+
+  lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showSlide(galleryIndex + 1);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (galleryItems.length > 1) {
+      if (e.key === 'ArrowLeft') showSlide(galleryIndex - 1);
+      if (e.key === 'ArrowRight') showSlide(galleryIndex + 1);
+    }
+  });
+
+  // single-image containers
+  document.querySelectorAll('.showcase-img, .fun-img').forEach(container => {
+    const img = container.querySelector('img');
+    if (img && img.getAttribute('src') !== '') {
+      container.addEventListener('click', () => openLightbox(img.src, img.alt));
+    }
+  });
+
+  // gallery — collect all items for navigation
+  const gallerySlides = document.querySelectorAll('.gallery-item');
+  const slideData = Array.from(gallerySlides).map(item => {
+    const img = item.querySelector('img');
+    const caption = item.querySelector('figcaption');
+    return { src: img.src, alt: caption ? caption.textContent : img.alt };
+  });
+
+  gallerySlides.forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(slideData[i].src, slideData[i].alt, slideData, i));
+  });
+
+  // --- Gallery auto-scroll ---
+  const gallery = document.querySelector('.showcase-gallery');
+  if (gallery) {
+    let autoScrollTimer = null;
+    let paused = false;
+    const scrollInterval = 5000;
+
+    function autoAdvance() {
+      if (paused) return;
+      const itemWidth = gallery.scrollWidth / gallerySlides.length;
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      if (gallery.scrollLeft >= maxScroll - 2) {
+        gallery.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        gallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
+      }
+    }
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoScrollTimer = setInterval(autoAdvance, scrollInterval);
+    }
+
+    function stopAutoScroll() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
+    }
+
+    gallery.addEventListener('mouseenter', () => { paused = true; });
+    gallery.addEventListener('mouseleave', () => { paused = false; });
+    gallery.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+    gallery.addEventListener('touchend', () => {
+      paused = false;
+      startAutoScroll();
+    });
+
+    // pause while lightbox is open
+    const origOpen = openLightbox;
+    const origClose = closeLightbox;
+
+    startAutoScroll();
+  }
+
   // =========================================
   // MOUSE PARALLAX — Hero floating symbols
   // =========================================
