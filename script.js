@@ -94,6 +94,7 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
   let galleryItems = [];
@@ -124,6 +125,8 @@
     lightboxImg.src = '';
     galleryItems = [];
   }
+
+  lightboxClose.addEventListener('click', closeLightbox);
 
   lightboxPrev.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -203,10 +206,6 @@
       paused = false;
       startAutoScroll();
     });
-
-    // pause while lightbox is open
-    const origOpen = openLightbox;
-    const origClose = closeLightbox;
 
     startAutoScroll();
   }

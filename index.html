@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Hugh O'Neill — Full-stack software engineer with experience across modern web and desktop stacks, from databases to frontends and everything in between.">
+  <meta property="og:title" content="Hugh O'Neill | Software Engineer">
+  <meta property="og:description" content="Full-stack software engineer with experience across modern web and desktop stacks, from databases to frontends and everything in between.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://grumpyrumpus.github.io/portfolio/">
+  <meta property="og:image" content="https://grumpyrumpus.github.io/portfolio/assets/profile.jpg">
   <title>Hugh O'Neill | Software Engineer</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%3E</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +102,7 @@
       <h2 class="section-title fade-in">about me</h2>
       <div class="about-grid">
         <div class="about-photo fade-in">
-          <img src="profile.jpg" alt="Hugh O'Neill" class="profile-photo" />
+          <img src="assets/profile.jpg" alt="Hugh O'Neill" class="profile-photo" />
         </div>
         <div class="about-text fade-in">
           <p>Full-stack software engineer with a B.S. in Computer Engineering from the University of Pittsburgh and an AWS Certified Cloud Practitioner certification. Experienced in building and scaling production applications across modern web and desktop stacks, with a strong foundation in data structures, algorithms, and software design.</p>
@@ -293,7 +298,7 @@
               </div>
             </div>
             <div class="showcase-img">
-              <img src="lyrics.png" alt="lyrics screenshot">
+              <img src="assets/lyrics.png" alt="lyrics screenshot">
             </div>
           </div>
         </article>
@@ -318,7 +323,7 @@
 
         <div class="fun-card fade-in">
           <div class="fun-img">
-            <img src="gradfill.gif" alt="gradfill demo">
+            <img src="assets/gradfill.gif" alt="gradfill demo">
           </div>
           <h4 class="fun-title">gradfill</h4>
           <p class="fun-desc">Terminal screensaver that fills the screen with animated gradient patterns &mdash; diagonal, spiral, wave, burst, and more.</p>
@@ -332,7 +337,7 @@
 
         <div class="fun-card fade-in">
           <div class="fun-img">
-            <img src="pacpipes.png" alt="pacpipes screenshot">
+            <img src="assets/pacpipes.png" alt="pacpipes screenshot">
           </div>
           <h4 class="fun-title">pacpipes</h4>
           <p class="fun-desc">Pac-Man terminal screensaver &mdash; eats pellets through lanes with a ghost in pursuit, leaving colored trails.</p>
@@ -426,13 +431,17 @@
         <p class="contact-text">Want to work together or just say hello?</p>
         <p class="contact-prompt">&gt;_ reach out</p>
         <div class="contact-links">
-          <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link">
+          <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link" target="_blank" rel="noopener noreferrer">
             <span class="contact-label">email</span>
             <span class="contact-value">hugh.j.oneill.4@gmail.com</span>
           </a>
-          <a href="https://www.linkedin.com/in/hugh-o-neill-iv" class="contact-link">
+          <a href="https://www.linkedin.com/in/hugh-o-neill-iv" class="contact-link" target="_blank" rel="noopener noreferrer">
             <span class="contact-label">linkedin</span>
             <span class="contact-value">linkedin.com/in/hugh-o-neill-iv</span>
+          </a>
+          <a href="https://github.com/GrumpyRumpus" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="contact-label">github</span>
+            <span class="contact-value">github.com/GrumpyRumpus</span>
           </a>
         </div>
       </div>
@@ -441,6 +450,7 @@
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
     <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">&#x276E;</button>
     <img class="lightbox-img" id="lightbox-img" src="" alt="">
     <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">&#x276F;</button>
@@ -448,7 +458,7 @@
   </div>
 
   <footer class="footer">
-    <p>Built with care. No frameworks harmed.</p>
+    <p>No frameworks harmed in the making of this site.</p>
   </footer>
 
   <script src="script.js"></script>
