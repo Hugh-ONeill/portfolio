@@ -565,21 +565,15 @@ a:hover {
   align-items: start;
 }
 
-.photo-placeholder {
+.profile-photo {
   width: 250px;
   height: 250px;
-  background: var(--surface0);
+  object-fit: cover;
   border: 2px solid transparent;
   border-radius: 8px;
   background-image: linear-gradient(var(--surface0), var(--surface0)), var(--rainbow);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--subtext0);
 }
 
 .about-text p {
@@ -1259,7 +1253,7 @@ a:hover {
     text-align: center;
   }
 
-  .photo-placeholder {
+  .profile-photo {
     width: 180px;
     height: 180px;
   }
