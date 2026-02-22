@@ -5,10 +5,30 @@
 
   // --- Theme Switcher ---
   const themeSwitcher = document.getElementById('theme-switcher');
+  const itchEmbed = document.getElementById('itch-embed');
+
+  // itch.io embed colors per theme: bg, fg, link, border
+  const itchColors = {
+    '':          { bg: '1e1e2e', fg: 'cdd6f4', link: '89dceb', border: '45475a' },
+    cassette:    { bg: '1a1028', fg: 'f8f0e8', link: 'f03888', border: '2e203e' },
+    cavelight:   { bg: '100304', fg: 'f4e8e4', link: '80a090', border: '220708' },
+    chalkboard:  { bg: '151518', fg: 'eef0f2', link: 'acc4d8', border: '252628' },
+    confetti:    { bg: '120e0e', fg: 'f4e0e8', link: '78d0ec', border: '302828' },
+    crystal:     { bg: '1a1424', fg: 'f0e8f8', link: '8878c8', border: '2e243c' },
+    cyberpunk:   { bg: '060c10', fg: 'f0faff', link: 'a078ff', border: '18242c' },
+  };
+
+  function updateItchEmbed(theme) {
+    if (!itchEmbed) return;
+    const c = itchColors[theme] || itchColors[''];
+    itchEmbed.src = `https://itch.io/embed/4314893?bg_color=${c.bg}&fg_color=${c.fg}&link_color=${c.link}&border_color=${c.border}`;
+  }
+
   const saved = localStorage.getItem('portfolio-theme');
   if (saved) {
     document.documentElement.dataset.theme = saved;
     themeSwitcher.value = saved;
+    updateItchEmbed(saved);
   }
   themeSwitcher.addEventListener('change', (e) => {
     const theme = e.target.value;
@@ -18,6 +38,7 @@
       delete document.documentElement.dataset.theme;
     }
     localStorage.setItem('portfolio-theme', theme);
+    updateItchEmbed(theme);
   });
 
   // --- Nav ---

@@ -826,6 +826,18 @@ a:hover {
   color: var(--subtext0);
 }
 
+/* ---- Itch.io Embed ---- */
+.showcase-embed {
+  flex: 0 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.showcase-embed iframe {
+  display: block;
+  max-width: 100%;
+}
+
 /* ---- Theme Gallery ---- */
 .showcase-gallery {
   flex: 0 0 320px;
@@ -1281,6 +1293,10 @@ a:hover {
 
   .showcase-gallery {
     flex: none;
+    width: 100%;
+  }
+
+  .showcase-embed {
     width: 100%;
   }
 
