@@ -467,15 +467,24 @@ a:hover {
 }
 
 .section-about {
-  background: var(--mantle);
+  background:
+    radial-gradient(ellipse at 15% 30%, color-mix(in srgb, var(--lavender) 4%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, color-mix(in srgb, var(--teal) 3%, transparent) 0%, transparent 50%),
+    var(--mantle);
 }
 
 .section-experience {
-  background: var(--base);
+  background:
+    radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--peach) 4%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, color-mix(in srgb, var(--blue) 3%, transparent) 0%, transparent 50%),
+    var(--base);
 }
 
 .section-projects {
-  background: var(--mantle);
+  background:
+    radial-gradient(ellipse at 10% 60%, color-mix(in srgb, var(--mauve) 4%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 30%, color-mix(in srgb, var(--green) 3%, transparent) 0%, transparent 50%),
+    var(--mantle);
 }
 
 .section-dots::before {
@@ -490,11 +499,17 @@ a:hover {
 }
 
 .section-skills {
-  background: var(--mantle);
+  background:
+    radial-gradient(ellipse at 25% 40%, color-mix(in srgb, var(--sky) 4%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 60%, color-mix(in srgb, var(--pink) 3%, transparent) 0%, transparent 50%),
+    var(--mantle);
 }
 
 .section-contact {
-  background: var(--base);
+  background:
+    radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--lavender) 4%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 70%, color-mix(in srgb, var(--teal) 3%, transparent) 0%, transparent 50%),
+    var(--base);
 }
 
 .container {
