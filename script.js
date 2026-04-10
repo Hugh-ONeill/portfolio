@@ -10,10 +10,12 @@
   // itch.io embed colors per theme: bg, fg, link, border
   const itchColors = {
     '':          { bg: '1e1e2e', fg: 'cdd6f4', link: '89dceb', border: '45475a' },
+    cardstock:   { bg: 'e4dcd0', fg: '2c2622', link: '688898', border: 'ccc4b8' },
     cassette:    { bg: '1a1028', fg: 'f8f0e8', link: 'f03888', border: '2e203e' },
     cavelight:   { bg: '100304', fg: 'f4e8e4', link: '80a090', border: '220708' },
     chalkboard:  { bg: '151518', fg: 'eef0f2', link: 'acc4d8', border: '252628' },
     confetti:    { bg: '120e0e', fg: 'f4e0e8', link: '78d0ec', border: '302828' },
+    crocus:      { bg: '131018', fg: 'ece8f0', link: '9878b0', border: '24202e' },
     crystal:     { bg: '1a1424', fg: 'f0e8f8', link: '8878c8', border: '2e243c' },
     cyberpunk:   { bg: '060c10', fg: 'f0faff', link: 'a078ff', border: '18242c' },
   };

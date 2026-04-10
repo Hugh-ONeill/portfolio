@@ -160,6 +160,54 @@
   --rainbow: linear-gradient(90deg, #ff3090, #e040a0, #c850b0, #b060b8, #9868c0, #8878c8, #7888d0, #68a0d8, #50c0e0, #40e0d0);
 }
 
+/* Cardstock — warm paper and ink */
+[data-theme="cardstock"] {
+  --crust:    #b0a898;
+  --mantle:   #f0e8dc;
+  --base:     #e4dcd0;
+  --surface0: #d8d0c4;
+  --surface1: #ccc4b8;
+  --surface2: #c0b8ac;
+  --text:     #2c2622;
+  --subtext0: #908880;
+  --subtext1: #605850;
+  --red:      #b0606a;
+  --peach:    #c07860;
+  --yellow:   #a88868;
+  --green:    #789860;
+  --teal:     #80a088;
+  --sky:      #689888;
+  --blue:     #688898;
+  --lavender: #6870a0;
+  --mauve:    #887898;
+  --pink:     #a89850;
+  --rainbow: linear-gradient(90deg, #b0606a, #c07860, #a88868, #a89850, #789860, #80a088, #689888, #688898, #6870a0, #887898);
+}
+
+/* Crocus — lavender ink on midnight amethyst */
+[data-theme="crocus"] {
+  --crust:    #060508;
+  --mantle:   #0c0a10;
+  --base:     #131018;
+  --surface0: #1a1622;
+  --surface1: #24202e;
+  --surface2: #2e283a;
+  --text:     #ece8f0;
+  --subtext0: #c4b8d0;
+  --subtext1: #8870a0;
+  --red:      #b898d0;
+  --peach:    #a888c0;
+  --yellow:   #c0a0b0;
+  --green:    #7870b8;
+  --teal:     #785890;
+  --sky:      #9878b0;
+  --blue:     #8870a0;
+  --lavender: #8868a0;
+  --mauve:    #583c70;
+  --pink:     #684880;
+  --rainbow: linear-gradient(90deg, #382450, #483060, #583c70, #684880, #785890, #8868a0, #9878b0, #a888c0, #b898d0, #c0a0b0);
+}
+
 /* Cyberpunk — neon over midnight */
 [data-theme="cyberpunk"] {
   --crust:    #00060a;
