@@ -209,6 +209,26 @@
         <article class="showcase-card fade-in">
           <div class="showcase-body">
             <div class="showcase-text">
+              <h3 class="showcase-title">Crystal Battle</h3>
+              <p class="showcase-desc">Competitive Pokemon battle agent for Gen 2 OU. Combines Monte Carlo Tree Search with neural network policy priors (AlphaZero-style PUCT selection), expectiminimax with alpha-beta pruning, and a custom evaluation function with matchup-aware scoring. Includes a full training pipeline: self-play data generation, human replay scraping, 579-dimensional feature extraction, and ONNX model export for Rust-side inference. Plays on Pokemon Showdown via websocket integration.</p>
+              <div class="project-tags">
+                <span class="tag tag-peach">Rust</span>
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-sky">PyTorch</span>
+                <span class="tag tag-blue">ONNX</span>
+                <span class="tag tag-mauve">MCTS</span>
+              </div>
+              <div class="showcase-links">
+                <a href="https://github.com/GrumpyRumpus/crystal-battle" class="showcase-link" target="_blank" rel="noopener">source</a>
+                <a href="https://github.com/GrumpyRumpus/poke-engine" class="showcase-link" target="_blank" rel="noopener">engine fork</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <div class="showcase-body">
+            <div class="showcase-text">
               <h3 class="showcase-title">Unified Theme Engine</h3>
               <p class="showcase-desc">System that themes 32 applications from shared JSON color palettes. Generates configs for Waybar, Kitty, Rofi, Neovim, Firefox, and 25+ more via envsubst templating with contrast-aware color generation and per-theme overrides.</p>
               <div class="project-tags">
@@ -370,6 +390,7 @@
             <li>Java</li>
             <li>TypeScript / JavaScript</li>
             <li>Kotlin</li>
+            <li>Rust</li>
             <li>C</li>
             <li>SQL</li>
           </ul>
@@ -413,9 +434,11 @@
         <div class="skill-group fade-in">
           <h3 class="skill-category">AI / ML</h3>
           <ul class="skill-list">
+            <li>PyTorch / ONNX</li>
+            <li>Reinforcement Learning</li>
+            <li>MCTS / Tree Search</li>
             <li>OpenAI API</li>
             <li>Azure AI</li>
-            <li>Prompt Engineering</li>
             <li>Claude &amp; Codex</li>
           </ul>
         </div>
