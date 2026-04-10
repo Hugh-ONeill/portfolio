@@ -889,6 +889,20 @@ a:hover {
   color: var(--subtext0);
 }
 
+/* ---- Architecture Diagram ---- */
+.showcase-diagram {
+  margin-top: 1rem;
+  border: 1px solid var(--surface1);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--base);
+}
+
+.showcase-diagram img {
+  width: 100%;
+  display: block;
+}
+
 /* ---- Itch.io Embed ---- */
 .showcase-embed {
   flex: 0 0 auto;

@@ -226,6 +226,82 @@
               </div>
             </div>
           </div>
+          <div class="showcase-diagram" role="img" aria-label="Crystal Battle architecture: data pipeline, feature extraction, policy/value nets, MCTS search, Showdown integration">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" fill="none">
+              <style>
+                .cb-label { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 11px; fill: var(--text); text-anchor: middle; dominant-baseline: central; }
+                .cb-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8.5px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
+                .cb-dim { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 7.5px; fill: var(--surface2); text-anchor: middle; dominant-baseline: central; }
+                .cb-group { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 9px; fill: var(--subtext0); text-anchor: middle; letter-spacing: 0.1em; }
+                .cb-box { rx: 6; ry: 6; stroke-width: 1.5; }
+                .cb-arrow { stroke-width: 1.5; fill: none; marker-end: url(#cb-ah); }
+              </style>
+              <defs>
+                <marker id="cb-ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <path d="M0,0 L8,3 L0,6" fill="var(--surface2)" />
+                </marker>
+              </defs>
+              <rect width="720" height="340" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
+              <!-- Data -->
+              <text x="130" y="22" class="cb-group">DATA</text>
+              <rect x="16" y="36" width="110" height="44" class="cb-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="71" y="52" class="cb-label" fill="var(--green)">replays</text>
+              <text x="71" y="66" class="cb-sub">1962 human games</text>
+              <rect x="140" y="36" width="110" height="44" class="cb-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="195" y="52" class="cb-label" fill="var(--green)">self-play</text>
+              <text x="195" y="66" class="cb-sub">MCTS vs MCTS</text>
+              <path d="M71,80 L71,100 L280,100 L280,120" class="cb-arrow" stroke="var(--surface2)" />
+              <path d="M195,80 L195,100 L280,100" class="cb-arrow" stroke="var(--surface2)" />
+              <!-- Features -->
+              <rect x="210" y="120" width="140" height="50" class="cb-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="280" y="138" class="cb-label" fill="var(--sky)">features v2</text>
+              <text x="280" y="154" class="cb-sub">579 dims / state</text>
+              <rect x="380" y="115" width="170" height="60" rx="4" ry="4" fill="var(--base)" stroke="var(--surface1)" stroke-width="1" stroke-dasharray="3" />
+              <text x="465" y="130" class="cb-dim">moves: type, power, STAB, eff (120)</text>
+              <text x="465" y="142" class="cb-dim">pokemon: stats + boosts     (444)</text>
+              <text x="465" y="154" class="cb-dim">sides: spikes, screens       (10)</text>
+              <text x="465" y="166" class="cb-dim">global: weather, speed         (5)</text>
+              <line x1="350" y1="145" x2="380" y2="145" stroke="var(--surface1)" stroke-width="1" stroke-dasharray="3" />
+              <path d="M250,170 L250,200 L195,200 L195,215" class="cb-arrow" stroke="var(--surface2)" />
+              <path d="M310,170 L310,200 L375,200 L375,215" class="cb-arrow" stroke="var(--surface2)" />
+              <!-- Networks -->
+              <text x="195" y="207" class="cb-group">TRAIN</text>
+              <rect x="130" y="215" width="130" height="50" class="cb-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="195" y="233" class="cb-label" fill="var(--mauve)">policy net</text>
+              <text x="195" y="247" class="cb-sub">KL div on visits</text>
+              <rect x="310" y="215" width="130" height="50" class="cb-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="375" y="233" class="cb-label" fill="var(--mauve)">value net</text>
+              <text x="375" y="247" class="cb-sub">win prob (88% acc)</text>
+              <path d="M195,265 L195,290 L480,290" class="cb-arrow" stroke="var(--peach)" />
+              <path d="M375,265 L375,290" class="cb-arrow" stroke="var(--peach)" />
+              <text x="300" y="283" class="cb-dim" fill="var(--peach)">ONNX export</text>
+              <!-- Search -->
+              <text x="590" y="207" class="cb-group">SEARCH</text>
+              <rect x="490" y="215" width="105" height="50" class="cb-box" fill="var(--base)" stroke="var(--lavender)" />
+              <text x="543" y="230" class="cb-label" fill="var(--lavender)">MCTS</text>
+              <text x="543" y="244" class="cb-sub">PUCT priors</text>
+              <text x="543" y="255" class="cb-sub">c = 2.0</text>
+              <rect x="608" y="215" width="100" height="50" class="cb-box" fill="var(--base)" stroke="var(--lavender)" />
+              <text x="658" y="233" class="cb-label" fill="var(--lavender)">minimax</text>
+              <text x="658" y="248" class="cb-sub">depth 4-6</text>
+              <rect x="570" y="120" width="134" height="50" class="cb-box" fill="var(--base)" stroke="var(--yellow)" />
+              <text x="637" y="138" class="cb-label" fill="var(--yellow)">eval</text>
+              <text x="637" y="154" class="cb-sub">matchup-aware boosts</text>
+              <path d="M610,170 L543,215" class="cb-arrow" stroke="var(--surface2)" />
+              <path d="M660,170 L658,215" class="cb-arrow" stroke="var(--surface2)" />
+              <!-- Output -->
+              <rect x="520" y="290" width="185" height="40" class="cb-box" fill="var(--base)" stroke="var(--red)" />
+              <text x="613" y="306" class="cb-label" fill="var(--red)">Pokemon Showdown</text>
+              <text x="613" y="320" class="cb-sub">websocket / poke-env</text>
+              <path d="M543,265 L543,290 L520,290" class="cb-arrow" stroke="var(--surface2)" />
+              <path d="M658,265 L658,290" class="cb-arrow" stroke="var(--surface2)" />
+              <!-- Language badges -->
+              <rect x="16" y="296" width="80" height="28" rx="4" ry="4" fill="var(--base)" stroke="var(--peach)" stroke-width="1" />
+              <text x="56" y="312" class="cb-sub" fill="var(--peach)">Rust engine</text>
+              <rect x="104" y="296" width="100" height="28" rx="4" ry="4" fill="var(--base)" stroke="var(--green)" stroke-width="1" />
+              <text x="154" y="312" class="cb-sub" fill="var(--green)">Python + PyTorch</text>
+            </svg>
+          </div>
         </article>
 
         <article class="showcase-card fade-in">
