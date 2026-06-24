@@ -91,6 +91,12 @@
       <h1 class="hero-name">Hugh O'Neill</h1>
       <p class="hero-tagline">Full-Stack Software Engineer</p>
       <p class="hero-sub">Building across the stack, from databases to frontends and everything in between.</p>
+      <p class="hero-status"><span class="status-dot"></span>open to full-stack &amp; software engineering roles &middot; remote / NJ / NYC</p>
+      <div class="hero-cta">
+        <a href="assets/Hugh-ONeill-Resume.pdf" class="btn btn-primary" download>&#x2193; r&eacute;sum&eacute;</a>
+        <a href="#projects" class="btn btn-ghost">view projects</a>
+        <a href="#contact" class="btn btn-ghost">get in touch</a>
+      </div>
     </div>
     <div class="scroll-indicator">
       <span>scroll</span>
@@ -212,7 +218,7 @@
           <div class="showcase-body">
             <div class="showcase-text">
               <h3 class="showcase-title">Crystal Battle</h3>
-              <p class="showcase-desc">Competitive Pokemon battle agent for Gen 2 OU. Combines Monte Carlo Tree Search with neural network policy priors (AlphaZero-style PUCT selection), expectiminimax with alpha-beta pruning, and a custom evaluation function with matchup-aware scoring. Includes a full training pipeline: self-play data generation, human replay scraping, 579-dimensional feature extraction, and ONNX model export for Rust-side inference. Plays on Pokemon Showdown via websocket integration.</p>
+              <p class="showcase-desc">AlphaZero-style battle agent for Gen 2 OU. The search core is <strong>Monte Carlo Tree Search</strong> guided by neural-network policy priors (PUCT selection), backed by expectiminimax with alpha-beta pruning and a custom, matchup-aware evaluation at the leaves. Behind it runs a full training pipeline: self-play generation, human-replay scraping (1,962 ladder games), a <strong>579-dimensional</strong> per-state feature extractor, and policy/value nets trained in PyTorch then exported to <code>ONNX</code> for fast Rust-side inference. The trained agent plays live on Pokemon Showdown over a websocket connection.</p>
               <div class="project-tags">
                 <span class="tag tag-peach">Rust</span>
                 <span class="tag tag-green">Python</span>
@@ -226,12 +232,11 @@
               </div>
             </div>
           </div>
-          <div class="showcase-diagram" role="img" aria-label="Crystal Battle architecture: data pipeline, feature extraction, policy/value nets, MCTS search, Showdown integration">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" fill="none">
+          <div class="showcase-diagram" role="img" aria-label="Crystal Battle pipeline: data from replays and self-play, 579-dim feature extraction, policy and value nets trained in PyTorch and exported to ONNX, MCTS + minimax search, live play on Pokemon Showdown">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" fill="none">
               <style>
                 .cb-label { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 11px; fill: var(--text); text-anchor: middle; dominant-baseline: central; }
-                .cb-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8.5px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
-                .cb-dim { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 7.5px; fill: var(--surface2); text-anchor: middle; dominant-baseline: central; }
+                .cb-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
                 .cb-group { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 9px; fill: var(--subtext0); text-anchor: middle; letter-spacing: 0.1em; }
                 .cb-box { rx: 6; ry: 6; stroke-width: 1.5; }
                 .cb-arrow { stroke-width: 1.5; fill: none; marker-end: url(#cb-ah); }
@@ -241,65 +246,174 @@
                   <path d="M0,0 L8,3 L0,6" fill="var(--surface2)" />
                 </marker>
               </defs>
-              <rect width="720" height="340" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
-              <!-- Data -->
-              <text x="130" y="22" class="cb-group">DATA</text>
-              <rect x="16" y="36" width="110" height="44" class="cb-box" fill="var(--base)" stroke="var(--green)" />
-              <text x="71" y="52" class="cb-label" fill="var(--green)">replays</text>
-              <text x="71" y="66" class="cb-sub">1962 human games</text>
-              <rect x="140" y="36" width="110" height="44" class="cb-box" fill="var(--base)" stroke="var(--green)" />
-              <text x="195" y="52" class="cb-label" fill="var(--green)">self-play</text>
-              <text x="195" y="66" class="cb-sub">MCTS vs MCTS</text>
-              <path d="M71,80 L71,100 L280,100 L280,120" class="cb-arrow" stroke="var(--surface2)" />
-              <path d="M195,80 L195,100 L280,100" class="cb-arrow" stroke="var(--surface2)" />
-              <!-- Features -->
-              <rect x="210" y="120" width="140" height="50" class="cb-box" fill="var(--base)" stroke="var(--sky)" />
-              <text x="280" y="138" class="cb-label" fill="var(--sky)">features v2</text>
-              <text x="280" y="154" class="cb-sub">579 dims / state</text>
-              <rect x="380" y="115" width="170" height="60" rx="4" ry="4" fill="var(--base)" stroke="var(--surface1)" stroke-width="1" stroke-dasharray="3" />
-              <text x="465" y="130" class="cb-dim">moves: type, power, STAB, eff (120)</text>
-              <text x="465" y="142" class="cb-dim">pokemon: stats + boosts     (444)</text>
-              <text x="465" y="154" class="cb-dim">sides: spikes, screens       (10)</text>
-              <text x="465" y="166" class="cb-dim">global: weather, speed         (5)</text>
-              <line x1="350" y1="145" x2="380" y2="145" stroke="var(--surface1)" stroke-width="1" stroke-dasharray="3" />
-              <path d="M250,170 L250,200 L195,200 L195,215" class="cb-arrow" stroke="var(--surface2)" />
-              <path d="M310,170 L310,200 L375,200 L375,215" class="cb-arrow" stroke="var(--surface2)" />
-              <!-- Networks -->
-              <text x="195" y="207" class="cb-group">TRAIN</text>
-              <rect x="130" y="215" width="130" height="50" class="cb-box" fill="var(--base)" stroke="var(--mauve)" />
-              <text x="195" y="233" class="cb-label" fill="var(--mauve)">policy net</text>
-              <text x="195" y="247" class="cb-sub">KL div on visits</text>
-              <rect x="310" y="215" width="130" height="50" class="cb-box" fill="var(--base)" stroke="var(--mauve)" />
-              <text x="375" y="233" class="cb-label" fill="var(--mauve)">value net</text>
-              <text x="375" y="247" class="cb-sub">win prob (88% acc)</text>
-              <path d="M195,265 L195,290 L480,290" class="cb-arrow" stroke="var(--peach)" />
-              <path d="M375,265 L375,290" class="cb-arrow" stroke="var(--peach)" />
-              <text x="300" y="283" class="cb-dim" fill="var(--peach)">ONNX export</text>
-              <!-- Search -->
-              <text x="590" y="207" class="cb-group">SEARCH</text>
-              <rect x="490" y="215" width="105" height="50" class="cb-box" fill="var(--base)" stroke="var(--lavender)" />
-              <text x="543" y="230" class="cb-label" fill="var(--lavender)">MCTS</text>
-              <text x="543" y="244" class="cb-sub">PUCT priors</text>
-              <text x="543" y="255" class="cb-sub">c = 2.0</text>
-              <rect x="608" y="215" width="100" height="50" class="cb-box" fill="var(--base)" stroke="var(--lavender)" />
-              <text x="658" y="233" class="cb-label" fill="var(--lavender)">minimax</text>
-              <text x="658" y="248" class="cb-sub">depth 4-6</text>
-              <rect x="570" y="120" width="134" height="50" class="cb-box" fill="var(--base)" stroke="var(--yellow)" />
-              <text x="637" y="138" class="cb-label" fill="var(--yellow)">eval</text>
-              <text x="637" y="154" class="cb-sub">matchup-aware boosts</text>
-              <path d="M610,170 L543,215" class="cb-arrow" stroke="var(--surface2)" />
-              <path d="M660,170 L658,215" class="cb-arrow" stroke="var(--surface2)" />
-              <!-- Output -->
-              <rect x="520" y="290" width="185" height="40" class="cb-box" fill="var(--base)" stroke="var(--red)" />
-              <text x="613" y="306" class="cb-label" fill="var(--red)">Pokemon Showdown</text>
-              <text x="613" y="320" class="cb-sub">websocket / poke-env</text>
-              <path d="M543,265 L543,290 L520,290" class="cb-arrow" stroke="var(--surface2)" />
-              <path d="M658,265 L658,290" class="cb-arrow" stroke="var(--surface2)" />
-              <!-- Language badges -->
-              <rect x="16" y="296" width="80" height="28" rx="4" ry="4" fill="var(--base)" stroke="var(--peach)" stroke-width="1" />
-              <text x="56" y="312" class="cb-sub" fill="var(--peach)">Rust engine</text>
-              <rect x="104" y="296" width="100" height="28" rx="4" ry="4" fill="var(--base)" stroke="var(--green)" stroke-width="1" />
-              <text x="154" y="312" class="cb-sub" fill="var(--green)">Python + PyTorch</text>
+              <rect width="720" height="190" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
+              <text x="91" y="24" class="cb-group">DATA</text>
+              <text x="271" y="24" class="cb-group">FEATURES</text>
+              <text x="461" y="24" class="cb-group">TRAIN</text>
+              <!-- top row: data -> features -> nets -->
+              <rect x="16" y="44" width="150" height="50" class="cb-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="91" y="64" class="cb-label" fill="var(--green)">data</text>
+              <text x="91" y="80" class="cb-sub">replays + self-play</text>
+              <rect x="196" y="44" width="150" height="50" class="cb-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="271" y="64" class="cb-label" fill="var(--sky)">579-dim features</text>
+              <text x="271" y="80" class="cb-sub">per battle state</text>
+              <rect x="376" y="44" width="170" height="50" class="cb-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="461" y="64" class="cb-label" fill="var(--mauve)">policy + value nets</text>
+              <text x="461" y="80" class="cb-sub">PyTorch &#183; 88% acc</text>
+              <path d="M166,69 L196,69" class="cb-arrow" stroke="var(--surface2)" />
+              <path d="M346,69 L376,69" class="cb-arrow" stroke="var(--surface2)" />
+              <!-- second row: search -> showdown -->
+              <rect x="196" y="122" width="210" height="50" class="cb-box" fill="var(--base)" stroke="var(--lavender)" />
+              <text x="301" y="142" class="cb-label" fill="var(--lavender)">MCTS + minimax</text>
+              <text x="301" y="158" class="cb-sub">PUCT priors &#183; &#945;&#946; &#183; matchup eval</text>
+              <rect x="436" y="122" width="170" height="50" class="cb-box" fill="var(--base)" stroke="var(--red)" />
+              <text x="521" y="142" class="cb-label" fill="var(--red)">Pokemon Showdown</text>
+              <text x="521" y="158" class="cb-sub">live websocket</text>
+              <!-- nets -> (ONNX) -> search -->
+              <path d="M461,94 L461,108 L301,108 L301,122" class="cb-arrow" stroke="var(--peach)" />
+              <text x="392" y="102" class="cb-sub" fill="var(--peach)">ONNX export</text>
+              <path d="M406,147 L436,147" class="cb-arrow" stroke="var(--surface2)" />
+            </svg>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <div class="showcase-body">
+            <div class="showcase-text">
+              <h3 class="showcase-title">job-scan</h3>
+              <p class="showcase-desc">Daily, resume-matched job scanner that runs itself on a timer and costs nothing to operate. Scrapes fresh postings from company ATS boards (Greenhouse, Lever, Ashby) and remote aggregators (HN "Who is hiring?", RemoteOK), drops obvious misses with cheap title/location pre-filters, then scores each survivor 0&ndash;100 against my resume with a <strong>local LLM</strong>. The model rates four independent dimensions &mdash; the final number is computed deterministically in Python, so the ranking is transparent and tunable rather than a black-box vibe. Dedupes against SQLite and delivers a ranked Markdown digest plus a Flask dashboard with application-status tracking. Runs unattended via systemd timers, no API keys.</p>
+              <div class="project-tags">
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-peach">Flask</span>
+                <span class="tag tag-mauve">Ollama / Gemma</span>
+                <span class="tag tag-blue">SQLite</span>
+                <span class="tag tag-sky">systemd</span>
+              </div>
+              <div class="showcase-links">
+                <a href="https://github.com/Hugh-ONeill/job-scan" class="showcase-link" target="_blank" rel="noopener">source</a>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-diagram" role="img" aria-label="job-scan pipeline: scrape ATS boards and aggregators, pre-filter, dedup against SQLite, score with a local LLM into deterministic sub-scores, deliver a ranked report and Flask dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" fill="none">
+              <style>
+                .js-label { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 11px; fill: var(--text); text-anchor: middle; dominant-baseline: central; }
+                .js-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
+                .js-group { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 9px; fill: var(--subtext0); text-anchor: middle; letter-spacing: 0.1em; }
+                .js-box { rx: 6; ry: 6; stroke-width: 1.5; }
+                .js-arrow { stroke-width: 1.5; fill: none; marker-end: url(#js-ah); }
+              </style>
+              <defs>
+                <marker id="js-ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <path d="M0,0 L8,3 L0,6" fill="var(--surface2)" />
+                </marker>
+              </defs>
+              <rect width="720" height="180" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
+              <text x="86" y="22" class="js-group">SCRAPE</text>
+              <text x="361" y="22" class="js-group">FILTER &#183; SCORE</text>
+              <text x="645" y="22" class="js-group">DELIVER</text>
+              <!-- sources -->
+              <rect x="16" y="44" width="130" height="50" class="js-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="81" y="62" class="js-label" fill="var(--green)">sources</text>
+              <text x="81" y="78" class="js-sub">ATS + aggregators</text>
+              <!-- pre-filter -->
+              <rect x="166" y="44" width="110" height="50" class="js-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="221" y="62" class="js-label" fill="var(--sky)">pre-filter</text>
+              <text x="221" y="78" class="js-sub">title &#183; location</text>
+              <!-- dedup -->
+              <rect x="296" y="44" width="120" height="50" class="js-box" fill="var(--base)" stroke="var(--blue)" />
+              <text x="356" y="62" class="js-label" fill="var(--blue)">SQLite</text>
+              <text x="356" y="78" class="js-sub">dedup + status</text>
+              <!-- scorer -->
+              <rect x="436" y="44" width="130" height="50" class="js-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="501" y="62" class="js-label" fill="var(--mauve)">LLM scorer</text>
+              <text x="501" y="78" class="js-sub">local Gemma</text>
+              <!-- dashboard -->
+              <rect x="586" y="44" width="118" height="50" class="js-box" fill="var(--base)" stroke="var(--red)" />
+              <text x="645" y="62" class="js-label" fill="var(--red)">report</text>
+              <text x="645" y="78" class="js-sub">Flask dashboard</text>
+              <!-- sub-scores -->
+              <rect x="436" y="116" width="130" height="46" class="js-box" fill="var(--base)" stroke="var(--yellow)" />
+              <text x="501" y="132" class="js-label" fill="var(--yellow)">4 sub-scores</text>
+              <text x="501" y="148" class="js-sub">deterministic final</text>
+              <!-- arrows -->
+              <path d="M146,69 L166,69" class="js-arrow" stroke="var(--surface2)" />
+              <path d="M276,69 L296,69" class="js-arrow" stroke="var(--surface2)" />
+              <path d="M416,69 L436,69" class="js-arrow" stroke="var(--surface2)" />
+              <path d="M566,69 L586,69" class="js-arrow" stroke="var(--surface2)" />
+              <path d="M501,94 L501,116" class="js-arrow" stroke="var(--surface2)" />
+              <path d="M566,139 L645,139 L645,94" class="js-arrow" stroke="var(--peach)" />
+            </svg>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <div class="showcase-body">
+            <div class="showcase-text">
+              <h3 class="showcase-title">grounded-rag <span class="wip-badge">in progress</span></h3>
+              <p class="showcase-desc">Local, citation-grounded question answering over any document corpus. Ask a question, get an answer that <strong>quotes its sources</strong> with inline <code>[1][2]</code> citations &mdash; and that says "I don't know" when the retrieved context doesn't support an answer. Documents are chunked with overlap, embedded via Ollama, and stored in Postgres + pgvector; queries run hybrid retrieval (vector + keyword) with a rerank pass before a local Gemma model generates the streamed, cited response. Built around an <strong>evaluation harness</strong> that actually measures retrieval hit-rate@k and answer faithfulness &mdash; most RAG demos wire up libraries and never check whether retrieval works. Runs entirely locally on a single GPU; FastAPI backend, React/TS frontend, containerized with Docker and a k8s manifest.</p>
+              <div class="project-tags">
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-peach">FastAPI</span>
+                <span class="tag tag-blue">React / TS</span>
+                <span class="tag tag-mauve">Postgres + pgvector</span>
+                <span class="tag tag-sky">Ollama</span>
+                <span class="tag tag-teal">Docker / k8s</span>
+              </div>
+              <div class="showcase-links">
+                <a href="https://github.com/Hugh-ONeill/grounded-rag" class="showcase-link" target="_blank" rel="noopener">source</a>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-diagram" role="img" aria-label="grounded-rag pipeline: ingest documents by chunking and embedding into Postgres pgvector; queries embed, hybrid-retrieve, rerank, and generate a cited answer with Gemma; an eval harness measures hit-rate and faithfulness">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" fill="none">
+              <style>
+                .gr-label { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 11px; fill: var(--text); text-anchor: middle; dominant-baseline: central; }
+                .gr-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
+                .gr-group { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 9px; fill: var(--subtext0); text-anchor: middle; letter-spacing: 0.1em; }
+                .gr-box { rx: 6; ry: 6; stroke-width: 1.5; }
+                .gr-arrow { stroke-width: 1.5; fill: none; marker-end: url(#gr-ah); }
+              </style>
+              <defs>
+                <marker id="gr-ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <path d="M0,0 L8,3 L0,6" fill="var(--surface2)" />
+                </marker>
+              </defs>
+              <rect width="720" height="200" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
+              <!-- Ingest -->
+              <text x="120" y="22" class="gr-group">INGEST</text>
+              <rect x="16" y="36" width="120" height="48" class="gr-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="76" y="54" class="gr-label" fill="var(--green)">documents</text>
+              <text x="76" y="70" class="gr-sub">chunk + overlap</text>
+              <rect x="156" y="36" width="120" height="48" class="gr-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="216" y="54" class="gr-label" fill="var(--sky)">embed</text>
+              <text x="216" y="70" class="gr-sub">Ollama</text>
+              <rect x="296" y="36" width="150" height="48" class="gr-box" fill="var(--base)" stroke="var(--blue)" />
+              <text x="371" y="54" class="gr-label" fill="var(--blue)">Postgres</text>
+              <text x="371" y="70" class="gr-sub">+ pgvector</text>
+              <path d="M136,60 L156,60" class="gr-arrow" stroke="var(--surface2)" />
+              <path d="M276,60 L296,60" class="gr-arrow" stroke="var(--surface2)" />
+              <!-- eval -->
+              <rect x="476" y="36" width="228" height="48" class="gr-box" fill="var(--base)" stroke="var(--yellow)" />
+              <text x="590" y="54" class="gr-label" fill="var(--yellow)">eval harness</text>
+              <text x="590" y="70" class="gr-sub">hit-rate@k &#183; faithfulness</text>
+              <!-- Query -->
+              <text x="120" y="112" class="gr-group">QUERY</text>
+              <rect x="16" y="124" width="120" height="48" class="gr-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="76" y="142" class="gr-label" fill="var(--mauve)">query</text>
+              <text x="76" y="158" class="gr-sub">embed</text>
+              <rect x="156" y="124" width="160" height="48" class="gr-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="236" y="142" class="gr-label" fill="var(--sky)">hybrid retrieve</text>
+              <text x="236" y="158" class="gr-sub">vector + keyword &#8594; rerank</text>
+              <rect x="336" y="124" width="160" height="48" class="gr-box" fill="var(--base)" stroke="var(--peach)" />
+              <text x="416" y="142" class="gr-label" fill="var(--peach)">Gemma answer</text>
+              <text x="416" y="158" class="gr-sub">+ [citations]</text>
+              <path d="M136,148 L156,148" class="gr-arrow" stroke="var(--surface2)" />
+              <path d="M316,148 L336,148" class="gr-arrow" stroke="var(--surface2)" />
+              <!-- store feeds retrieval -->
+              <path d="M371,84 L371,148 L336,148" class="gr-arrow" stroke="var(--surface2)" />
+              <!-- eval measures answers (dashed) -->
+              <path d="M496,128 L560,90" stroke="var(--yellow)" stroke-width="1" stroke-dasharray="3" fill="none" opacity="0.7" />
             </svg>
           </div>
         </article>
@@ -536,6 +650,10 @@
         <p class="contact-text">Want to work together or just say hello?</p>
         <p class="contact-prompt">&gt;_ reach out</p>
         <div class="contact-links">
+          <a href="assets/Hugh-ONeill-Resume.pdf" class="contact-link" download>
+            <span class="contact-label">r&eacute;sum&eacute;</span>
+            <span class="contact-value">download PDF &#x2193;</span>
+          </a>
           <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link" target="_blank" rel="noopener noreferrer">
             <span class="contact-label">email</span>
             <span class="contact-value">hugh.j.oneill.4@gmail.com</span>
