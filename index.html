@@ -217,6 +217,80 @@
         <article class="showcase-card fade-in">
           <div class="showcase-body">
             <div class="showcase-text">
+              <h3 class="showcase-title">open-red</h3>
+              <p class="showcase-desc">Working toward the first <strong>unassisted finish of Pokemon Red by an open-weights LLM</strong>, on one local GPU. A 31B Gemma model served by Ollama writes its own list of objectives, authors a plan for each with machine-checkable completion conditions, chooses every move in the overworld, and writes its own battle policy in a small DSL that is scored in arenas built from real save states. The harness drives a Lua reimplementation of the game through <strong>31 decision-free ops</strong> and reports back what happened; it holds no map of Kanto and never hints. When a leg is stuck, a <strong>recovery ladder</strong> asks the model whether the leg is already done, blocked, out of order, worded wrong or not real, and only carries out the answer. The rule everything rests on: <strong>stop lying, stop hiding, stop refusing, never point</strong>, because a run that succeeds only when the harness steers is not the thing being built. Runs have reached the Hall of Fame on outlines the model wrote itself, each with fixes landed mid-run; the furthest untouched run went eight badges deep into Victory Road. <strong>790+ tests named as sentences</strong>, most written the day a run failed, each docstring the incident report.</p>
+              <div class="project-tags">
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-peach">Lua</span>
+                <span class="tag tag-mauve">Ollama / Gemma</span>
+                <span class="tag tag-blue">Agents</span>
+                <span class="tag tag-teal">Evals</span>
+              </div>
+              <div class="showcase-links">
+                <a href="https://github.com/Hugh-ONeill/open-red" class="showcase-link" target="_blank" rel="noopener">source</a>
+                <a href="https://github.com/Hugh-ONeill/open-red#watching-a-run" class="showcase-link" target="_blank" rel="noopener">watching a run</a>
+              </div>
+            </div>
+            <div class="showcase-img">
+              <img loading="lazy" src="assets/open-red-hud.png" alt="open-red mid-run: the game with the seen overlay beside the HUD showing the team, the plan and the model's reasoning">
+            </div>
+          </div>
+          <div class="showcase-diagram" role="img" aria-label="open-red loop: the model writes the outline of legs and a plan for each with checkable completion conditions; every round it reads a page built from the run's own record and sends one op; the shim carries out 31 decision-free ops in a Lua reimplementation of Pokemon Red and reports what happened back to the page; when a leg is stuck, the recovery ladder asks the model whether it is done, blocked, too early, worded wrong or not real, and the answer rewrites the outline">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" fill="none">
+              <style>
+                .or-label { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 11px; fill: var(--text); text-anchor: middle; dominant-baseline: central; }
+                .or-sub { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 8px; fill: var(--subtext0); text-anchor: middle; dominant-baseline: central; }
+                .or-group { font-family: 'Fira Code', 'JetBrains Mono', monospace; font-size: 9px; fill: var(--subtext0); text-anchor: middle; letter-spacing: 0.1em; }
+                .or-box { rx: 6; ry: 6; stroke-width: 1.5; }
+                .or-arrow { stroke-width: 1.5; fill: none; marker-end: url(#or-ah); }
+              </style>
+              <defs>
+                <marker id="or-ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <path d="M0,0 L8,3 L0,6" fill="var(--surface2)" />
+                </marker>
+              </defs>
+              <rect width="720" height="190" fill="var(--surface0)" rx="8" ry="8" opacity="0.5" />
+              <text x="181" y="24" class="or-group">THE MODEL PLANS</text>
+              <text x="461" y="24" class="or-group">PLAYS</text>
+              <text x="640" y="24" class="or-group">THE GAME</text>
+              <!-- top row: outline -> leg plan -> round -> shim -->
+              <rect x="16" y="44" width="150" height="50" class="or-box" fill="var(--base)" stroke="var(--green)" />
+              <text x="91" y="64" class="or-label" fill="var(--green)">outline</text>
+              <text x="91" y="80" class="or-sub">its own list of legs</text>
+              <rect x="196" y="44" width="150" height="50" class="or-box" fill="var(--base)" stroke="var(--sky)" />
+              <text x="271" y="64" class="or-label" fill="var(--sky)">leg plan</text>
+              <text x="271" y="80" class="or-sub">checkable done-when</text>
+              <rect x="376" y="44" width="170" height="50" class="or-box" fill="var(--base)" stroke="var(--mauve)" />
+              <text x="461" y="64" class="or-label" fill="var(--mauve)">round</text>
+              <text x="461" y="80" class="or-sub">the page &#8594; one op</text>
+              <rect x="576" y="44" width="128" height="50" class="or-box" fill="var(--base)" stroke="var(--peach)" />
+              <text x="640" y="64" class="or-label" fill="var(--peach)">shim</text>
+              <text x="640" y="80" class="or-sub">31 decision-free ops</text>
+              <path d="M166,69 L196,69" class="or-arrow" stroke="var(--surface2)" />
+              <path d="M346,69 L376,69" class="or-arrow" stroke="var(--surface2)" />
+              <path d="M546,69 L576,69" class="or-arrow" stroke="var(--surface2)" />
+              <!-- the game, and the truth coming back to the page -->
+              <rect x="576" y="122" width="128" height="50" class="or-box" fill="var(--base)" stroke="var(--red)" />
+              <text x="640" y="142" class="or-label" fill="var(--red)">Pokemon Red</text>
+              <text x="640" y="158" class="or-sub">Lua reimplementation</text>
+              <path d="M640,94 L640,122" class="or-arrow" stroke="var(--surface2)" />
+              <path d="M576,147 L500,147 L500,94" class="or-arrow" stroke="var(--red)" />
+              <text x="538" y="138" class="or-sub" fill="var(--red)">what happened</text>
+              <!-- stuck: the ladder, whose answer rewrites the outline -->
+              <rect x="196" y="122" width="170" height="50" class="or-box" fill="var(--base)" stroke="var(--yellow)" />
+              <text x="281" y="142" class="or-label" fill="var(--yellow)">the ladder</text>
+              <text x="281" y="158" class="or-sub">done? blocked? not real?</text>
+              <path d="M420,94 L420,108 L281,108 L281,122" class="or-arrow" stroke="var(--yellow)" />
+              <text x="350" y="116" class="or-sub" fill="var(--yellow)">leg stuck</text>
+              <path d="M196,147 L91,147 L91,94" class="or-arrow" stroke="var(--yellow)" />
+              <text x="143" y="138" class="or-sub" fill="var(--yellow)">the model's answer</text>
+            </svg>
+          </div>
+        </article>
+
+        <article class="showcase-card fade-in">
+          <div class="showcase-body">
+            <div class="showcase-text">
               <h3 class="showcase-title">Crystal Battle</h3>
               <p class="showcase-desc">Competitive Pokemon battling agent for Gen 9 OU and Monotype. Instead of trusting one guess about the opponent's partly-hidden team, each turn it samples several plausible completions from Smogon usage statistics, runs one <strong>Monte Carlo Tree Search</strong> per sampled world over a Rust battle engine, and merges the results; observational set inference (speed floors, damage brackets) sharpens those beliefs as the battle reveals evidence. Team preview and forced switches are searched, not picked by heuristic. A translation layer validated on <strong>4,917/4,917</strong> real ladder turns feeds live play on Pokemon Showdown, where every change is A/B benchmarked head-to-head against <strong>foul-play, winner of the NeurIPS 2025 PokeAgent Challenge</strong>. Also in the repo: trained lead-picker and move-prediction nets, an exhaustive endgame solver, and honestly-documented negative results from the self-play distillation arc.</p>
               <div class="project-tags">
