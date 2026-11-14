@@ -6,8 +6,11 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // --- Theme Switcher ---
+  // the saved theme is first applied by the inline script in <head>
   const themeSwitcher = document.getElementById('theme-switcher');
   const itchEmbed = document.getElementById('itch-embed');
+  const colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+  const lightThemes = ['cardstock'];
 
   // itch.io embed colors per theme: bg, fg, link, border
   const itchColors = {
@@ -25,24 +28,46 @@
   function updateItchEmbed(theme) {
     if (!itchEmbed) return;
     const c = itchColors[theme] || itchColors[''];
-    itchEmbed.src = `https://itch.io/embed/4314893?bg_color=${c.bg}&fg_color=${c.fg}&link_color=${c.link}&border_color=${c.border}`;
+    const src = `https://itch.io/embed/4314893?bg_color=${c.bg}&fg_color=${c.fg}&link_color=${c.link}&border_color=${c.border}`;
+    // the iframe is lazy, so this usually lands before its first load
+    if (itchEmbed.src !== src) itchEmbed.src = src;
   }
 
-  const saved = localStorage.getItem('portfolio-theme');
-  if (saved) {
-    document.documentElement.dataset.theme = saved;
-    themeSwitcher.value = saved;
-    updateItchEmbed(saved);
-  }
-  themeSwitcher.addEventListener('change', (e) => {
-    const theme = e.target.value;
+  function applyTheme(theme) {
     if (theme) {
       document.documentElement.dataset.theme = theme;
     } else {
       delete document.documentElement.dataset.theme;
     }
-    localStorage.setItem('portfolio-theme', theme);
+    // native controls and scrollbars follow the palette's scheme
+    colorSchemeMeta.content = lightThemes.includes(theme) ? 'light' : 'dark';
+    themeSwitcher.value = theme;
     updateItchEmbed(theme);
+  }
+
+  function savedTheme() {
+    try {
+      return localStorage.getItem('portfolio-theme') || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  applyTheme(savedTheme());
+
+  themeSwitcher.addEventListener('change', (e) => {
+    const theme = e.target.value;
+    applyTheme(theme);
+    try {
+      localStorage.setItem('portfolio-theme', theme);
+    } catch (err) {
+      // the theme still applies for this visit
+    }
+  });
+
+  // keep other open tabs in step
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'portfolio-theme') applyTheme(e.newValue || '');
   });
 
   // --- Nav ---

@@ -17,6 +17,9 @@
 
 /* === Catppuccin Mocha Palette === */
 :root {
+  /* every palette is dark except cardstock, which overrides this */
+  color-scheme: dark;
+
   --crust:    #11111b;
   --mantle:   #181825;
   --base:     #1e1e2e;
@@ -179,6 +182,7 @@
 
 /* Cardstock — warm paper and ink */
 [data-theme="cardstock"] {
+  color-scheme: light;
   --crust:    #b0a898;
   --mantle:   #f0e8dc;
   --base:     #e4dcd0;

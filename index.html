@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
+  <script>
+    // gates the scroll fade-ins, so content is visible without script
+    document.documentElement.classList.add('js');
+    // applies the saved theme before first paint
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      if (t) {
+        document.documentElement.dataset.theme = t;
+        if (t === 'cardstock') document.querySelector('meta[name="color-scheme"]').content = 'light';
+      }
+    } catch (e) {}
+  </script>
   <meta name="description" content="Hugh O'Neill — Full-stack software engineer with experience across modern web and desktop stacks, from databases to frontends and everything in between.">
   <meta property="og:title" content="Hugh O'Neill | Software Engineer">
   <meta property="og:description" content="Full-stack software engineer with experience across modern web and desktop stacks, from databases to frontends and everything in between.">
@@ -15,7 +27,6 @@
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/fira-code-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <!-- Nav -->
