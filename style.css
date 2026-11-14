@@ -958,7 +958,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .showcase-img img {
@@ -966,17 +965,6 @@ a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.showcase-img img[src=""] {
-  display: none;
-}
-
-.showcase-img:has(img[src=""])::after {
-  content: '>_ screenshot';
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--subtext0);
 }
 
 /* ---- Architecture Diagram ---- */
@@ -1003,6 +991,7 @@ a:hover {
 .showcase-embed iframe {
   display: block;
   max-width: 100%;
+  border: 0;
 }
 
 /* ---- Theme Gallery ---- */
@@ -1041,15 +1030,25 @@ a:hover {
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+}
+
+.gallery-item button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: none;
+}
+
+.gallery-item button:focus-visible {
+  outline-offset: -2px;
 }
 
 .gallery-item img {
   width: 100%;
-  flex: 1;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
-  min-height: 0;
 }
 
 .gallery-item figcaption {
@@ -1167,7 +1166,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  width: 100%;
 }
 
 .fun-img img,
@@ -1176,17 +1175,6 @@ a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.fun-img img[src=""] {
-  display: none;
-}
-
-.fun-img:has(img[src=""])::after {
-  content: '>_ screenshot';
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--subtext0);
 }
 
 .fun-title {

@@ -110,7 +110,7 @@
       <h2 class="section-title fade-in">about me</h2>
       <div class="about-grid">
         <div class="about-photo fade-in">
-          <img loading="lazy" src="assets/profile.jpg" alt="Hugh O'Neill" class="profile-photo" />
+          <img src="assets/profile.jpg" alt="Hugh O'Neill" class="profile-photo" width="250" height="250" loading="lazy" decoding="async">
         </div>
         <div class="about-text fade-in">
           <p>Full-stack software engineer with a B.S. in Computer Engineering from the University of Pittsburgh and an AWS Certified Cloud Practitioner certification. Experienced in building and scaling production applications across modern web and desktop stacks, with a strong foundation in data structures, algorithms, and software design.</p>
@@ -231,9 +231,9 @@
                 <a href="https://github.com/Hugh-ONeill/open-red#watching-a-run" class="showcase-link" target="_blank" rel="noopener">watching a run</a>
               </div>
             </div>
-            <div class="showcase-img">
-              <img loading="lazy" src="assets/open-red-hud.png" alt="open-red mid-run: the game with the seen overlay beside the HUD showing the team, the plan and the model's reasoning">
-            </div>
+            <button type="button" class="showcase-img lightbox-trigger" data-full="assets/open-red-hud.png" data-caption="open-red HUD" data-alt="open-red mid-run: the game with the seen overlay beside the HUD showing the team, the plan and the model's reasoning" aria-label="Enlarge open-red HUD screenshot">
+              <img src="assets/open-red-hud.png" alt="" width="1269" height="697" loading="lazy" decoding="async">
+            </button>
           </div>
           <div class="showcase-diagram" role="img" aria-label="open-red loop: the model writes the outline of legs and a plan for each with checkable completion conditions; every round it reads a page built from the run's own record and sends one op; the shim carries out 31 decision-free ops in a Lua reimplementation of Pokemon Red and reports what happened back to the page; when a leg is stuck, the recovery ladder asks the model whether it is done, blocked, too early, worded wrong or not real, and the answer rewrites the outline">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" fill="none">
@@ -578,42 +578,60 @@
                 <a href="https://github.com/Hugh-ONeill/dotfiles/tree/main/.config/themes" class="showcase-link" target="_blank" rel="noopener">source</a>
               </div>
             </div>
-            <div class="showcase-gallery">
+            <div class="showcase-gallery" role="group" aria-label="Theme screenshots">
               <div class="gallery-track">
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_catppuccin.png" alt="Catppuccin theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/catppuccin-1920.webp" data-caption="catppuccin" aria-label="Enlarge catppuccin theme screenshot">
+                    <img src="assets/themes/catppuccin-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>catppuccin</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_cassette.png" alt="Cassette theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/cassette-1920.webp" data-caption="cassette" aria-label="Enlarge cassette theme screenshot">
+                    <img src="assets/themes/cassette-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>cassette</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_cavelight.png" alt="Cavelight theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/cavelight-1920.webp" data-caption="cavelight" aria-label="Enlarge cavelight theme screenshot">
+                    <img src="assets/themes/cavelight-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>cavelight</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_chalkboard.png" alt="Chalkboard theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/chalkboard-1920.webp" data-caption="chalkboard" aria-label="Enlarge chalkboard theme screenshot">
+                    <img src="assets/themes/chalkboard-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>chalkboard</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_confetti.png" alt="Confetti theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/confetti-1920.webp" data-caption="confetti" aria-label="Enlarge confetti theme screenshot">
+                    <img src="assets/themes/confetti-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>confetti</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_crystal.png" alt="Crystal theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/crystal-1920.webp" data-caption="crystal" aria-label="Enlarge crystal theme screenshot">
+                    <img src="assets/themes/crystal-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>crystal</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_cyberpunk.png" alt="Cyberpunk theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/cyberpunk-1920.webp" data-caption="cyberpunk" aria-label="Enlarge cyberpunk theme screenshot">
+                    <img src="assets/themes/cyberpunk-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>cyberpunk</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_cardiac.png" alt="Cardiac theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/cardiac-1920.webp" data-caption="cardiac" aria-label="Enlarge cardiac theme screenshot">
+                    <img src="assets/themes/cardiac-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>cardiac</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                  <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/theme_win98.png" alt="Win98 theme">
+                  <button type="button" class="lightbox-trigger" data-full="assets/themes/win98-1920.webp" data-caption="win98" aria-label="Enlarge win98 theme screenshot">
+                    <img src="assets/themes/win98-640.webp" alt="" width="640" height="360" loading="lazy" decoding="async">
+                  </button>
                   <figcaption>win98</figcaption>
                 </figure>
               </div>
@@ -624,7 +642,7 @@
         <article class="showcase-card fade-in">
           <div class="showcase-body">
             <div class="showcase-text">
-              <h3 class="showcase-title"><img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/runner/main/data/resource/enemy.gif" alt="" class="showcase-title-icon"> Kitty-Run Redux <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/runner/main/data/resource/running.gif" alt="" class="showcase-title-icon"></h3>
+              <h3 class="showcase-title"><img src="https://raw.githubusercontent.com/Hugh-ONeill/runner/main/data/resource/enemy.gif" alt="" class="showcase-title-icon" width="32" height="32" loading="lazy" decoding="async"> Kitty-Run Redux <img src="https://raw.githubusercontent.com/Hugh-ONeill/runner/main/data/resource/running.gif" alt="" class="showcase-title-icon" width="32" height="32" loading="lazy" decoding="async"></h3>
               <p class="showcase-desc">Run-and-gun platformer rebuilt from scratch in Godot. Procedurally generated terrain, pixel-art sprites, parallax backgrounds, and a CRT post-processing overlay. Playable in the browser via itch.io.</p>
               <div class="project-tags">
                 <span class="tag tag-green">GDScript</span>
@@ -636,7 +654,7 @@
               </div>
             </div>
             <div class="showcase-embed">
-              <iframe id="itch-embed" loading="lazy" frameborder="0" src="https://itch.io/embed/4314893?bg_color=1e1e2e&amp;fg_color=cdd6f4&amp;link_color=89dceb&amp;border_color=45475a" width="552" height="167"><a href="https://grumpyrumpus.itch.io/kitty-run-redux">Kitty Run Redux by GrumpyRumpus</a></iframe>
+              <iframe id="itch-embed" title="Kitty Run Redux on itch.io" loading="lazy" src="https://itch.io/embed/4314893?bg_color=1e1e2e&amp;fg_color=cdd6f4&amp;link_color=89dceb&amp;border_color=45475a" width="552" height="167"><a href="https://grumpyrumpus.itch.io/kitty-run-redux">Kitty Run Redux by GrumpyRumpus</a></iframe>
             </div>
           </div>
         </article>
@@ -656,9 +674,9 @@
                 <a href="https://github.com/Hugh-ONeill/dotfiles/tree/main/.local/bin/lyrics" class="showcase-link" target="_blank" rel="noopener">source</a>
               </div>
             </div>
-            <div class="showcase-img">
-              <img loading="lazy" src="assets/lyrics.png" alt="lyrics screenshot">
-            </div>
+            <button type="button" class="showcase-img lightbox-trigger" data-full="assets/lyrics.webp" data-caption="lyrics" aria-label="Enlarge lyrics screenshot">
+              <img src="assets/lyrics.webp" alt="" width="1350" height="817" loading="lazy" decoding="async">
+            </button>
           </div>
         </article>
 
@@ -666,10 +684,13 @@
 
       <div class="fun-grid">
         <div class="fun-card fade-in">
-          <div class="fun-img">
-            <img loading="lazy" src="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/banana.gif" alt="banana screenshot">
-          </div>
-          <h4 class="fun-title">banana</h4>
+          <button type="button" class="fun-img lightbox-trigger" data-full="https://raw.githubusercontent.com/Hugh-ONeill/dotfiles/main/.github/screenshots/banana.gif" data-caption="banana" aria-label="Enlarge banana demo">
+            <video muted loop playsinline preload="none" poster="assets/banana-poster.webp" width="480" height="538">
+              <source src="assets/banana.webm" type="video/webm">
+              <source src="assets/banana.mp4" type="video/mp4">
+            </video>
+          </button>
+          <h3 class="fun-title">banana</h3>
           <p class="fun-desc">3D rotating banana in the terminal. Yes, it's the donut script. No, I'm not sorry.</p>
           <div class="project-tags">
             <span class="tag tag-green">Python</span>
@@ -681,10 +702,13 @@
         </div>
 
         <div class="fun-card fade-in">
-          <div class="fun-img">
-            <img loading="lazy" src="assets/gradfill.gif" alt="gradfill demo">
-          </div>
-          <h4 class="fun-title">gradfill</h4>
+          <button type="button" class="fun-img lightbox-trigger" data-full="assets/gradfill.gif" data-caption="gradfill" aria-label="Enlarge gradfill demo">
+            <video muted loop playsinline preload="none" poster="assets/gradfill-poster.webp" width="320" height="228">
+              <source src="assets/gradfill.webm" type="video/webm">
+              <source src="assets/gradfill.mp4" type="video/mp4">
+            </video>
+          </button>
+          <h3 class="fun-title">gradfill</h3>
           <p class="fun-desc">Terminal screensaver that fills the screen with animated gradient patterns &mdash; diagonal, spiral, wave, burst, and more.</p>
           <div class="project-tags">
             <span class="tag tag-green">Bash</span>
@@ -695,10 +719,10 @@
         </div>
 
         <div class="fun-card fade-in">
-          <div class="fun-img">
-            <img loading="lazy" src="assets/pacpipes.png" alt="pacpipes screenshot">
-          </div>
-          <h4 class="fun-title">pacpipes</h4>
+          <button type="button" class="fun-img lightbox-trigger" data-full="assets/pacpipes.webp" data-caption="pacpipes" aria-label="Enlarge pacpipes screenshot">
+            <img src="assets/pacpipes.webp" alt="" width="953" height="717" loading="lazy" decoding="async">
+          </button>
+          <h3 class="fun-title">pacpipes</h3>
           <p class="fun-desc">Pac-Man terminal screensaver &mdash; eats pellets through lanes with a ghost in pursuit, leaving colored trails.</p>
           <div class="project-tags">
             <span class="tag tag-green">Bash</span>
@@ -709,10 +733,10 @@
         </div>
 
         <div class="fun-card fade-in">
-          <div class="fun-img">
-            <img loading="lazy" src="assets/leetcode-srs.png" alt="leetcode-srs terminal screenshot showing cards and problems due today">
-          </div>
-          <h4 class="fun-title">leetcode-srs</h4>
+          <button type="button" class="fun-img lightbox-trigger" data-full="assets/leetcode-srs.png" data-caption="leetcode-srs" data-alt="leetcode-srs terminal screenshot showing cards and problems due today" aria-label="Enlarge leetcode-srs screenshot">
+            <img src="assets/leetcode-srs.png" alt="" width="640" height="512" loading="lazy" decoding="async">
+          </button>
+          <h3 class="fun-title">leetcode-srs</h3>
           <p class="fun-desc">Spaced-repetition trainer for coding interviews. SM-2 scheduling over data-structure, pattern-decision, and problem cards; grades "confidently wrong" as worse than blanking.</p>
           <div class="project-tags">
             <span class="tag tag-green">Python</span>
