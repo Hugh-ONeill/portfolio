@@ -355,6 +355,8 @@ a:hover {
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  /* the browser tracks which link's section is in view */
+  scroll-target-group: auto;
 }
 
 .nav-link {
@@ -379,12 +381,13 @@ a:hover {
   transition: transform 0.3s;
 }
 
+/* .target-current is set by script where :target-current is unsupported */
 .nav-link:hover,
-.nav-link.active {
+.nav-link:is(:target-current, .target-current) {
   color: var(--lavender);
 }
 
-.nav-link.active::after,
+.nav-link:is(:target-current, .target-current)::after,
 .nav-link:hover::after {
   transform: scaleX(1);
 }

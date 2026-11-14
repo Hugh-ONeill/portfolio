@@ -48,22 +48,32 @@
   // --- Nav ---
   const nav = document.getElementById('nav');
   const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('.section, .hero');
 
-  function updateNav() {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  }
-
-  function updateActiveLink() {
-    let current = '';
-    for (const section of sections) {
-      if (window.scrollY >= section.offsetTop - 120) {
-        current = section.getAttribute('id');
-      }
-    }
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
+  // highlighting is CSS (scroll-target-group + :target-current) where
+  // supported; script only mirrors it to aria-current for screen readers
+  if (CSS.supports('scroll-target-group: auto')) {
+    const syncAriaCurrent = () => {
+      const current = document.querySelector('.nav-link:target-current');
+      navLinks.forEach(link => {
+        link.setAttribute('aria-current', link === current ? 'true' : 'false');
+      });
+    };
+    syncAriaCurrent();
+    document.addEventListener('scrollend', syncAriaCurrent);
+  } else {
+    // the hero has no nav link, so reaching it clears the highlight
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('target-current', isActive);
+          link.setAttribute('aria-current', isActive);
+        });
+      });
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    document.querySelectorAll('.hero, .section').forEach(section => spy.observe(section));
   }
 
   // --- Fade-in on scroll ---
@@ -78,32 +88,28 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // --- Scroll indicator fade ---
+  // --- Nav border + scroll indicator fade ---
   const scrollIndicator = document.querySelector('.scroll-indicator');
+
+  function updateOnScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+    if (scrollIndicator) {
+      scrollIndicator.style.opacity = Math.max(0, 1 - window.scrollY / 300);
+    }
+  }
 
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        updateNav();
-        updateActiveLink();
-        if (scrollIndicator) {
-          scrollIndicator.style.opacity = Math.max(0, 1 - window.scrollY / 300);
-        }
+        updateOnScroll();
         ticking = false;
       });
       ticking = true;
     }
   }, { passive: true });
 
-  updateNav();
-  updateActiveLink();
-
-  // --- Expandable project cards ---
-  function toggleCard(card) {
-    const expanded = card.classList.toggle('expanded');
-    card.setAttribute('aria-expanded', expanded);
-  }
+  updateOnScroll();
 
   // --- Expandable experience cards ---
   // the <summary> is the real control; clicking elsewhere on the card is
