@@ -117,81 +117,69 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxClose = document.getElementById('lightbox-close');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
-  let galleryItems = [];
-  let galleryIndex = 0;
+  let slides = [];
+  let slideIndex = 0;
 
   function showSlide(i) {
-    galleryIndex = (i + galleryItems.length) % galleryItems.length;
-    lightboxImg.src = galleryItems[galleryIndex].src;
-    lightboxCaption.textContent = galleryItems[galleryIndex].alt;
+    slideIndex = (i + slides.length) % slides.length;
+    lightboxImg.src = slides[slideIndex].full;
+    lightboxImg.alt = slides[slideIndex].alt;
+    lightboxCaption.textContent = slides[slideIndex].caption;
   }
 
-  function openLightbox(src, alt, items, index) {
-    lightboxImg.src = src;
-    lightboxCaption.textContent = alt;
-    if (items && items.length > 1) {
-      galleryItems = items;
-      galleryIndex = index || 0;
-      lightbox.classList.add('has-gallery');
-    } else {
-      galleryItems = [];
-      lightbox.classList.remove('has-gallery');
-    }
-    lightbox.classList.add('active');
+  function openLightbox(items, index) {
+    slides = items;
+    lightbox.classList.toggle('has-gallery', items.length > 1);
+    showSlide(index);
+    lightbox.showModal();
   }
 
-  function closeLightbox() {
-    lightbox.classList.remove('active', 'has-gallery');
-    lightboxImg.src = '';
-    galleryItems = [];
+  // Esc, the close button, and backdrop clicks all end up here
+  lightbox.addEventListener('close', () => {
+    lightboxImg.removeAttribute('src');
+    slides = [];
+  });
+
+  lightboxPrev.addEventListener('click', () => showSlide(slideIndex - 1));
+  lightboxNext.addEventListener('click', () => showSlide(slideIndex + 1));
+
+  lightbox.addEventListener('keydown', (e) => {
+    if (slides.length < 2) return;
+    if (e.key === 'ArrowLeft') showSlide(slideIndex - 1);
+    if (e.key === 'ArrowRight') showSlide(slideIndex + 1);
+  });
+
+  // backdrop click for browsers without <dialog closedby>
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    lightbox.addEventListener('click', (e) => {
+      // the prev/next/close buttons sit outside the box but are children
+      if (e.target !== lightbox) return;
+      const rect = lightbox.getBoundingClientRect();
+      const inside = rect.top <= e.clientY && e.clientY <= rect.bottom &&
+        rect.left <= e.clientX && e.clientX <= rect.right;
+      if (!inside) lightbox.close();
+    });
   }
 
-  lightboxClose.addEventListener('click', closeLightbox);
-
-  lightboxPrev.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showSlide(galleryIndex - 1);
+  // data-alt carries a fuller description where the caption is only a name
+  const slideFor = (trigger) => ({
+    full: trigger.dataset.full,
+    caption: trigger.dataset.caption,
+    alt: trigger.dataset.alt || trigger.dataset.caption,
   });
 
-  lightboxNext.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showSlide(galleryIndex + 1);
+  // gallery thumbnails share one set so prev/next can walk them
+  const galleryTriggers = Array.from(document.querySelectorAll('.gallery-item .lightbox-trigger'));
+  const gallerySlides = galleryTriggers.map(slideFor);
+  galleryTriggers.forEach((trigger, i) => {
+    trigger.addEventListener('click', () => openLightbox(gallerySlides, i));
   });
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (galleryItems.length > 1) {
-      if (e.key === 'ArrowLeft') showSlide(galleryIndex - 1);
-      if (e.key === 'ArrowRight') showSlide(galleryIndex + 1);
-    }
-  });
-
-  // single-image containers
-  document.querySelectorAll('.showcase-img, .fun-img').forEach(container => {
-    const img = container.querySelector('img');
-    if (img && img.getAttribute('src') !== '') {
-      container.addEventListener('click', () => openLightbox(img.src, img.alt));
-    }
-  });
-
-  // gallery — collect all items for navigation
-  const gallerySlides = document.querySelectorAll('.gallery-item');
-  const slideData = Array.from(gallerySlides).map(item => {
-    const img = item.querySelector('img');
-    const caption = item.querySelector('figcaption');
-    return { src: img.src, alt: caption ? caption.textContent : img.alt };
-  });
-
-  gallerySlides.forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(slideData[i].src, slideData[i].alt, slideData, i));
+  document.querySelectorAll('.lightbox-trigger').forEach(trigger => {
+    if (galleryTriggers.includes(trigger)) return;
+    trigger.addEventListener('click', () => openLightbox([slideFor(trigger)], 0));
   });
 
   // --- Gallery auto-scroll ---

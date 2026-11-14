@@ -280,6 +280,24 @@ a:hover {
   color: var(--pink);
 }
 
+:focus-visible {
+  outline: 2px solid var(--lavender);
+  outline-offset: 2px;
+}
+
+/* sections take focus only as scroll targets */
+.section:focus-visible {
+  outline: none;
+}
+
+/* thumbnails that open the lightbox are real buttons */
+.lightbox-trigger {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 /* === Nav === */
 #nav {
   position: fixed;
@@ -1329,33 +1347,46 @@ a:hover {
 
 /* === Lightbox === */
 .lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: color-mix(in srgb, var(--crust) 92%, transparent);
-  backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.75rem;
-  cursor: pointer;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: visible;
+  background: transparent;
+  color: var(--text);
 }
 
-.lightbox.active {
+/* scoped to [open]: an unconditional display would show the closed dialog */
+.lightbox[open] {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lightbox:modal {
+  overscroll-behavior: contain;
+}
+
+.lightbox::backdrop {
+  background: color-mix(in srgb, var(--crust) 92%, transparent);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .lightbox-img {
   max-width: 90vw;
-  max-height: 85vh;
+  max-height: 80vh;
   object-fit: contain;
   border-radius: 6px;
   border: 1px solid var(--surface1);
 }
 
+/* controls sit at the viewport edges, outside the dialog box */
 .lightbox-nav {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: color-mix(in srgb, var(--surface0) 80%, transparent);
@@ -1390,7 +1421,7 @@ a:hover {
 }
 
 .lightbox-close {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1.5rem;
   background: none;

@@ -857,13 +857,15 @@
   </section>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">&#x276E;</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="">
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">&#x276F;</button>
-    <span class="lightbox-caption" id="lightbox-caption"></span>
-  </div>
+  <dialog class="lightbox" id="lightbox" closedby="any" aria-label="Image viewer">
+    <form method="dialog">
+      <button class="lightbox-close" aria-label="Close" autofocus>&times;</button>
+    </form>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#x276E;</button>
+    <img class="lightbox-img" id="lightbox-img" alt="">
+    <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#x276F;</button>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </dialog>
 
   <footer class="footer">
     <p>No frameworks harmed in the making of this site.</p>
