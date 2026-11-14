@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // --- Theme Switcher ---
   const themeSwitcher = document.getElementById('theme-switcher');
   const itchEmbed = document.getElementById('itch-embed');
@@ -184,47 +186,48 @@
 
   // --- Gallery auto-scroll ---
   const gallery = document.querySelector('.showcase-gallery');
-  if (gallery) {
-    let autoScrollTimer = null;
-    let paused = false;
+  if (gallery && galleryTriggers.length && !prefersReducedMotion) {
     const scrollInterval = 5000;
+    let touching = false;
 
-    function autoAdvance() {
-      if (paused) return;
-      const itemWidth = gallery.scrollWidth / gallerySlides.length;
+    // hover, keyboard focus, touch, or an open lightbox all hold it still
+    const isPaused = () => touching || lightbox.open || document.hidden ||
+      gallery.matches(':hover') || gallery.contains(document.activeElement);
+
+    setInterval(() => {
+      if (isPaused()) return;
+      const itemWidth = gallery.scrollWidth / galleryTriggers.length;
       const maxScroll = gallery.scrollWidth - gallery.clientWidth;
       if (gallery.scrollLeft >= maxScroll - 2) {
         gallery.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
         gallery.scrollBy({ left: itemWidth, behavior: 'smooth' });
       }
-    }
+    }, scrollInterval);
 
-    function startAutoScroll() {
-      stopAutoScroll();
-      autoScrollTimer = setInterval(autoAdvance, scrollInterval);
-    }
+    gallery.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+    gallery.addEventListener('touchend', () => { touching = false; });
+  }
 
-    function stopAutoScroll() {
-      if (autoScrollTimer) clearInterval(autoScrollTimer);
-      autoScrollTimer = null;
-    }
-
-    gallery.addEventListener('mouseenter', () => { paused = true; });
-    gallery.addEventListener('mouseleave', () => { paused = false; });
-    gallery.addEventListener('touchstart', () => { paused = true; }, { passive: true });
-    gallery.addEventListener('touchend', () => {
-      paused = false;
-      startAutoScroll();
-    });
-
-    startAutoScroll();
+  // --- Demo clips ---
+  // play only while on screen; with reduced motion the poster stays put
+  const clips = document.querySelectorAll('.fun-img video');
+  if (clips.length && !prefersReducedMotion) {
+    const clipObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    clips.forEach(clip => clipObserver.observe(clip));
   }
 
   // =========================================
   // MOUSE PARALLAX — Hero floating symbols
   // =========================================
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroFloats = document.querySelectorAll('.hero-float');
   const heroSection = document.querySelector('.hero');
   let mouseX = 0.5, mouseY = 0.5;
