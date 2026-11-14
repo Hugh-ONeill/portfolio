@@ -382,8 +382,10 @@ a:hover {
   clip-path: inset(0);
 }
 
+/* fixed layer clipped by .hero's clip-path: same look as
+   background-attachment: fixed, without the scroll repaints */
 .hero-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background:
     radial-gradient(circle at 10% 30%, color-mix(in srgb, var(--red) 6%, transparent) 0%, transparent 40%),
@@ -392,7 +394,6 @@ a:hover {
     radial-gradient(circle at 70% 60%, color-mix(in srgb, var(--green) 5%, transparent) 0%, transparent 40%),
     radial-gradient(circle at 85% 30%, color-mix(in srgb, var(--blue) 6%, transparent) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--mauve) 5%, transparent) 0%, transparent 40%);
-  background-attachment: fixed;
   z-index: 0;
 }
 
@@ -686,16 +687,17 @@ a:hover {
   height: 200px;
   position: relative;
   background: var(--crust);
+  clip-path: inset(0);
 }
 
+/* fixed layer clipped by the divider, see .hero-bg */
 .parallax-divider::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image:
     radial-gradient(var(--surface1) 1px, transparent 1px);
   background-size: 20px 20px;
-  background-attachment: fixed;
   opacity: 0.25;
 }
 
