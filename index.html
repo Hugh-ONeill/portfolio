@@ -53,11 +53,12 @@
     </select>
   </nav>
 
+  <main>
   <!-- Hero -->
   <section id="hero" class="hero">
     <div class="hero-bg"></div>
     <!-- Floating code symbols — mouse-reactive parallax -->
-    <div class="hero-floats">
+    <div class="hero-floats" aria-hidden="true">
       <!-- python -->
       <span class="hero-float" data-speed="0.08" style="top:6%;left:5%">def</span>
       <span class="hero-float" data-speed="0.18" style="top:10%;left:30%">**</span>
@@ -102,14 +103,14 @@
       <h1 class="hero-name">Hugh O'Neill</h1>
       <p class="hero-tagline">Full-Stack Software Engineer</p>
       <p class="hero-sub">Building across the stack, from databases to frontends and everything in between.</p>
-      <p class="hero-status"><span class="status-dot"></span>open to full-stack &amp; software engineering roles &middot; remote / NJ / NYC</p>
+      <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>open to full-stack &amp; software engineering roles &middot; remote / NJ / NYC</p>
       <div class="hero-cta">
         <a href="assets/Hugh-ONeill-Resume.pdf" class="btn btn-primary" download>&#x2193; r&eacute;sum&eacute;</a>
         <a href="#projects" class="btn btn-ghost">view projects</a>
         <a href="#contact" class="btn btn-ghost">get in touch</a>
       </div>
     </div>
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" aria-hidden="true">
       <span>scroll</span>
       <div class="scroll-arrow"></div>
     </div>
@@ -856,7 +857,7 @@
             <span class="contact-label">r&eacute;sum&eacute;</span>
             <span class="contact-value">download PDF &#x2193;</span>
           </a>
-          <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:hugh.j.oneill.4@gmail.com" class="contact-link">
             <span class="contact-label">email</span>
             <span class="contact-value">hugh.j.oneill.4@gmail.com</span>
           </a>
@@ -872,6 +873,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Lightbox -->
   <dialog class="lightbox" id="lightbox" closedby="any" aria-label="Image viewer">
