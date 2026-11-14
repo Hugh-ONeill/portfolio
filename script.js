@@ -105,13 +105,16 @@
     card.setAttribute('aria-expanded', expanded);
   }
 
+  // --- Expandable experience cards ---
+  // the <summary> is the real control; clicking elsewhere on the card is
+  // a pointer convenience on top of it
   document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => toggleCard(card));
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleCard(card);
-      }
+    const details = card.querySelector('details');
+    if (!details) return;
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('summary, a')) return;
+      if (String(window.getSelection())) return;
+      details.open = !details.open;
     });
   });
 

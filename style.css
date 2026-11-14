@@ -796,14 +796,13 @@ a:hover {
 }
 
 .project-card:hover,
-.project-card:focus-visible {
+.project-card:focus-within {
   transform: translateY(-3px);
   border-color: var(--surface2);
-  outline: none;
 }
 
 .project-card:hover::before,
-.project-card:focus-visible::before {
+.project-card:focus-within::before {
   opacity: 1;
 }
 
@@ -854,33 +853,71 @@ a:hover {
   line-height: 1.5;
 }
 
-/* Expand hint chevron */
-.expand-hint {
-  font-size: 0.7rem;
-  color: var(--subtext0);
-  transition: transform 0.3s, color 0.3s;
-  display: inline-block;
+/* Expandable detail bullets */
+.project-more {
+  margin-bottom: 1rem;
 }
 
-.project-card.expanded .expand-hint {
-  transform: rotate(180deg);
+.project-more summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--subtext0);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.project-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-more summary::before {
+  content: '>';
+  content: '>' / '';
+  display: inline-block;
+  color: var(--mauve);
+}
+
+.project-more[open] summary::before {
+  rotate: 90deg;
+}
+
+.project-more summary:hover,
+.project-more[open] summary {
   color: var(--lavender);
 }
 
-/* Expandable detail bullets */
-.project-details {
-  list-style: none;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
-  margin: 0;
+.project-more::details-content {
+  /* lets block-size transition to and from its intrinsic size */
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
 }
 
-.project-card.expanded .project-details {
-  max-height: 500px;
-  opacity: 1;
-  margin-bottom: 1rem;
+.project-more:not([open])::details-content {
+  block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-more summary::before {
+    transition: rotate 0.2s;
+  }
+
+  .project-more::details-content {
+    transition: block-size, content-visibility, display;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    /* defers content-visibility: hidden until the collapse ends */
+    transition-behavior: allow-discrete;
+  }
+}
+
+.project-details {
+  list-style: none;
+  padding-top: 0.75rem;
 }
 
 .project-details li {
