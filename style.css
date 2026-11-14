@@ -824,21 +824,6 @@ a:hover {
   font-size: 1.3rem;
 }
 
-.project-links {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.project-link {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--subtext0);
-}
-
-.project-link:hover {
-  color: var(--lavender);
-}
-
 .project-title {
   font-family: var(--font-mono);
   font-size: 1.2rem;
@@ -1038,11 +1023,6 @@ a:hover {
   border-radius: 6px;
   overflow: hidden;
   background: var(--base);
-}
-
-.showcase-diagram img {
-  width: 100%;
-  display: block;
 }
 
 /* ---- Itch.io Embed ---- */
@@ -1536,10 +1516,6 @@ a:hover {
   .profile-photo {
     width: 180px;
     height: 180px;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
   }
 
   .showcase-body {
